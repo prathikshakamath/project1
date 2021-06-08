@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>Login Form</title>
 
-
+<?php
+session_start();
+?>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto');
 
@@ -108,9 +110,14 @@
                 x.type = "password";
             }
         }
+
+        function check(){
+var cb = document.getElementsByType('checkbox');
+    cb.checked = false;
+}
     </script>
 </head>
-<body>
+<body onload="check()">
     <form name="studentlogin" method="POST" action="login.php">
         <div class="container">
 
@@ -120,16 +127,17 @@
 
             <div class="signup-form">
                 <?php
-                    if(isset($_GET["msg"]) && $_GET["msg"]){
-                        echo '<span id="text">Please check email and password</span>';
-                        unset($_GET["msg"]);
-                        $_GET["msg"] = 0;
+                    if(isset($_SESSION["error"])){
+                       $er = $_SESSION["error"];
+                        print "<span id='text'>{$er}</span>";
+                        unset($_SESSION["error"]);
                     }
                 ?>
                 <input type="text" name="mail" placeholder="Email" class="input" required autocomplete="off" ><br>
                 <input type="password" id="input" name="password" placeholder="Password" class="input" required>
                 <input type="checkbox" onclick="visible()"> Show Password
 <br><br /><br />
+
                 <input type="submit" class="btn" value="LOGIN">
             </div>
 

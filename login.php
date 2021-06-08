@@ -13,6 +13,7 @@ $pwd=$_POST["password"];
 // To protect MySQL injection (more detail about MySQL injection)
 $un = stripslashes($un);
 $pwd = stripslashes($pwd);
+//$error = "Please check your email and password"; 
 $un = mysqli_real_escape_string($conn,$un);
 $pwd = mysqli_real_escape_string($conn,$pwd);
 $sql="SELECT * FROM $tbl_name WHERE email='$un' and password='$pwd'";
@@ -23,6 +24,7 @@ if($count==1){
 header("location:student_homepage.html");
 }
 else {
-header("location:student_login.php?msg=failed");
+$_SESSION["error"] = 'Please check your email and password';
+header("location:student_login.php");
 }
 ?>
