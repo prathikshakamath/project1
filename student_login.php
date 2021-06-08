@@ -47,7 +47,7 @@ session_start();
             width: 100%;
             box-sizing: border-box;
             height: 400px;
-           
+            
         }
 
         .signup {
@@ -97,7 +97,6 @@ session_start();
         }
 
         #text {
-            margin: 1%;
             color: red;
         }
     </style>
@@ -110,30 +109,15 @@ session_start();
                 x.type = "password";
             }
         }
-    function checkAll() { 
-
-var inputs = document.querySelectorAll('.check'); 
-
-for (var i = 0; i < inputs.length; i++) { 
-
-    inputs[i].checked = false; 
-
-} 
-
-} 
-
-window.onload = function() { 
-window.addEventListener('load', checkAll);
-}
     </script>
 </head>
 <body>
     <form name="studentlogin" method="POST" action="login.php">
         <div class="container">
 
-            <div class="signup"><a href="login.html">STUDENT LOGIN</a></div>
+            <div class="signup"><a href="student_login.php">STUDENT LOGIN</a></div>
 
-            <div class="login"><a href="login_admin.html">ADMIN LOGIN</a></div><br />
+            <div class="login"><a href="admin_login.php">ADMIN LOGIN</a></div><br />
 
             <div class="signup-form">
                 <?php
@@ -145,7 +129,7 @@ window.addEventListener('load', checkAll);
                 ?>
                 <input type="text" name="mail" placeholder="Email" class="input" required autocomplete="off" ><br>
                 <input type="password" id="input" name="password" placeholder="Password" class="input" required>
-                <input type="checkbox" onclick="visible()" class="check"> Show Password
+                <input type="checkbox" onclick="visible()" autocomplete="off"> Show Password
 <br><br /><br />
 
                 <input type="submit" class="btn" value="LOGIN">

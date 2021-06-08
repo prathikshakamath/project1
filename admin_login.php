@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Login</title>
-
+    <?php
+session_start();
+?>
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto');
@@ -91,24 +93,10 @@
             background-size:100% 100%;
         }
         #text{
-            margin:1%;
             color:red;
-            display:none;
         }
     </style>
     <script>
-        function validateform() {
-            var name = document.myform.name.value;
-            var password = document.myform.password.value;
-            if (name != "admin@bmsce.ac.in") {
-                document.getElementById('text').style.display = "block";
-                return false;
-            }
-            if (password != "admin") {
-                document.getElementById('text').style.display = "block";
-                return false;
-            }
-        }
         function visible() {
             var x = document.getElementById("input");
             if (x.type == "password") {
@@ -121,7 +109,7 @@
 </head>
 <body>
    
-    <form  onsubmit="return validateform()" name="myform" action="admin_homepage.html">
+    <form name="myform"  method="POST" action="login_admin.php">
     <div class="container">
 
         <div class="signup"><a href="student_login.php">STUDENT LOGIN</a></div>
@@ -129,10 +117,16 @@
         <div class="login">ADMIN LOGIN</div><br />
 
                                             <div class="signup-form">
-                                                <span id="text">Please check your Email and password</span>
-                                                <input type="text" name="name" placeholder="Email" class="input" required autocomplete="off"><br>
+                                            <?php
+                    if(isset($_SESSION["msg"])){
+                       $er1 = $_SESSION["msg"];
+                        print "<span id='text'>{$er1}</span>";
+                        unset($_SESSION["msg"]);
+                    }
+                ?>
+                                                <input type="text" name="mail" placeholder="Email" class="input" required autocomplete="off"><br>
                                                 <input type="password" name="password" placeholder="Password" class="input" id="input" required>
-                                                <input type="checkbox" onclick="visible()"> Show Password<br/><br /><br/>
+                                                <input type="checkbox" onclick="visible()" autocomplete="off"> Show Password<br/><br /><br/>
                                                 <input type="submit" class="btn" value="LOGIN">
 
                                             </div>
