@@ -105,8 +105,8 @@
     <nav class="sidenav">
         <img src="images/bmsce_logo.png" />
         <hr style="height:2px;border-width:0;background-color:#66fcf1">
-        <a href="student_homepage.html" id="active">HOME</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-        <a href="profile.html">View Profile</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
+        <a href="student_homepage.php" id="active">HOME</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
+        <a href="profile.php">View Profile</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
         <a href="course.html">Courses</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
         <a href="eligibility.html">View eligibility</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
         <button class="dropdown-btn">

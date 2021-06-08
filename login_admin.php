@@ -21,7 +21,7 @@ $result=mysqli_query($conn,$sql);
 $count=mysqli_num_rows($result);
 if($count==1){
     #$_SESSION["email"] = $un;
-header("location:admin_homepage.html"); 
+header("location:admin_homepage.php"); 
 }
 else {
 $_SESSION["msg"] = "Please check your email and password";
