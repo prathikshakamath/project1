@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>Login Form</title>
 
-<?php
-session_start();
+    <?php
+
+ session_start();
 ?>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto');

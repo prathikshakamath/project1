@@ -1,6 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+<?php
+ include('session.php');
+ //session_start();
+?>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
@@ -105,7 +109,7 @@
     <nav class="sidenav">
         <img src="images/bmsce_logo.png" />
         <hr style="height:2px;border-width:0;background-color:#66fcf1">
-        <a href="student_homepage.php" id="active">HOME</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
+        <a href="student_homepage.php " id="active">HOME</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
         <a href="profile.php">View Profile</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
         <a href="course.html">Courses</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
         <a href="eligibility.html">View eligibility</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
