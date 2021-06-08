@@ -20,8 +20,8 @@ $sql="SELECT * FROM $tbl_name WHERE email='$un' and password='$pwd'";
 $result=mysqli_query($conn,$sql);
 $count=mysqli_num_rows($result);
 if($count==1){
-    #$_SESSION["email"] = $un;
-header("location:student_homepage.html");
+    $_SESSION["user"] = $un;
+header("location:student_homepage.php");
 }
 else {
 $_SESSION["error"] = 'Please check your email and password';
