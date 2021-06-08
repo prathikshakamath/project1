@@ -106,7 +106,7 @@
     <img src="images/bmsce_logo.png" />
     <hr style="height:2px;border-width:0;background-color:#66fcf1">
     <a href="student_homepage.html">HOME</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-    <a href="profile.html">View Profile</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
+    <a href="profile.html">View Proile</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
     <a href="course.html" id="active">Courses</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
     <a href="eligibility.html">View eligibility</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
     <button class="dropdown-btn">
