@@ -110,14 +110,24 @@ session_start();
                 x.type = "password";
             }
         }
+    function checkAll() { 
 
-        function check(){
-var cb = document.getElementsByType('checkbox');
-    cb.checked = false;
+var inputs = document.querySelectorAll('.check'); 
+
+for (var i = 0; i < inputs.length; i++) { 
+
+    inputs[i].checked = false; 
+
+} 
+
+} 
+
+window.onload = function() { 
+window.addEventListener('load', checkAll);
 }
     </script>
 </head>
-<body onload="check()">
+<body>
     <form name="studentlogin" method="POST" action="login.php">
         <div class="container">
 
@@ -135,7 +145,7 @@ var cb = document.getElementsByType('checkbox');
                 ?>
                 <input type="text" name="mail" placeholder="Email" class="input" required autocomplete="off" ><br>
                 <input type="password" id="input" name="password" placeholder="Password" class="input" required>
-                <input type="checkbox" onclick="visible()"> Show Password
+                <input type="checkbox" onclick="visible()" class="check"> Show Password
 <br><br /><br />
 
                 <input type="submit" class="btn" value="LOGIN">
