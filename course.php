@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 
+<?php
+ include('session.php');
+?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
@@ -101,14 +104,14 @@
     </style>
 
 </head>
-<button class="logout"><a href="login.html">LOGOUT</a></button>
+<button class="logout"><a href="student_login.php">LOGOUT</a></button>
 <nav class="sidenav">
     <img src="images/bmsce_logo.png" />
     <hr style="height:2px;border-width:0;background-color:#66fcf1">
-    <a href="student_homepage.html">HOME</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-    <a href="profile.html">View Proile</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-    <a href="course.html" id="active">Courses</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-    <a href="eligibility.html">View eligibility</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
+    <a href="student_homepage.php">HOME</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
+    <a href="profile.php">View Proile</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
+    <a href="course.php" id="active">Courses</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
+    <a href="eligibility.php">View eligibility</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
     <button class="dropdown-btn">
         Exam
         <i class="fa fa-caret-down"></i>
@@ -139,49 +142,43 @@
         }
     </script>
     <section class="right">
+    <?php
+    $tbl_name1="course";
+    $tbl_name2="course_enrolled";
+    $conn =mysqli_connect("$host", "$username", "$password")or die("cannot connect"); 
+    mysqli_select_db($conn,"$db_name")or die("cannot select DB");
+    
+    $sql = "SELECT c.course_id AS cid,c.name as name,c.credits as credits FROM $tbl_name2 ce,$tbl_name1 c,$tbl_name s 
+    WHERE s.email='$usermail'and ce.sem=s.current_sem and s.usn=ce.usn and ce.course_id=c.course_id ";
+    $res=mysqli_query($conn,$sql);
+    $_SESSION["count1"] =mysqli_num_rows($res);
+    $j=0;
+    while ( $row=mysqli_fetch_assoc($res))
+   {
+       $i=0;
+    
+       $array[$j][$i++]=$row['cid'][0];
+       $array[$j][$i++]=$row['name'][0];
+       $array[$j][$i++]=$row['credits'][0];
+       $j++;
+   }
+    ?>
         <h2>COURSES</h2>
-        <p>FOR 3RD SEMESTER 2020-21</p>
+        <p>FOR SEMESTER : <?php echo " {$loggedin_sem}";?></p>
         <table>
             <tr>
                 <th>COURSE CODE</th>
                 <th>COURSE TITLE</th>
                 <th>CREDITS</th>
             </tr>
-            <tr>
-                <td>19MA3BSSDM</td>
-                <td>Static and Discrete Mathematics</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>19CS3ESMMC</td>
-                <td>Microprocessor and Microcontrollers</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>19CS3PCOOJ</td>
-                <td>OOJ Programming</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>19CS3PCDST</td>
-                <td>Data Structure</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>19CS3PCCOA</td>
-                <td>Computer Organization and Architecture</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>19CS3PCLOD</td>
-                <td>Logic Design</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>19IC4HSCPH</td>
-                <td>Environment Studies</td>
-                <td>1</td>
-            </tr>
+   <?php 
+     $count= $_SESSION["count1"];    
+    for($j=0;$j<$count;$j++){
+       echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td></tr>";
+          
+    }
+    ?>
+           
         </table>
     </section>
 </body>

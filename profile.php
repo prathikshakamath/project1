@@ -1,13 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
-=======
+
+
 <?php
  include('session.php');
  //session_start();
 ?>
->>>>>>> 844ea391056acb6e5f5c5e8d46ee96ab8879c717
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
@@ -135,16 +134,8 @@
 
 </head>
 <body>
-<<<<<<< HEAD
-    <button class="logout"><a href="login.html">LOGOUT</a></button>
-    <nav class="sidenav">
-        <img src="images/bmsce_logo.png" />
-        <hr style="height:2px;border-width:0;background-color:#66fcf1">
-        <a href="student_homepage.html">HOME</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-        <a href="profile.html" id="active">View Profile</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-        <a href="course.html">Courses</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-        <a href="eligibility.html">View eligibility</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-=======
+
+
     <button class="logout"><a href="student_homepage.php">LOGOUT</a></button>
     <nav class="sidenav">
         <img src="images/bmsce_logo.png" />
@@ -153,22 +144,18 @@
         <a href="profile.php" id="active">View Profile</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
         <a href="course.php">Courses</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
         <a href="eligibility.php">View eligibility</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
->>>>>>> 844ea391056acb6e5f5c5e8d46ee96ab8879c717
+
 
         <button class="dropdown-btn">
             Exam
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-<<<<<<< HEAD
-            <a href="timetable.html">Timetable</a>
-            <a href="instruction.html">Instructions</a>
-            <a href="form.html">Registration</a>
-=======
+
             <a href="timetable.php">Timetable</a>
             <a href="instruction.php">Instructions</a>
             <a href="form.php">Registration</a>
->>>>>>> 844ea391056acb6e5f5c5e8d46ee96ab8879c717
+
         </div>
         <hr style="height:2px;border-width:0;background-color:#66fcf1">
 
@@ -195,24 +182,7 @@
         <div>
 
            <span class="person">NAME: </span>
-<<<<<<< HEAD
-                                                                                                                 <span class="detail">Student</span><br />
-                                                                                                                 <hr style="height:2px;border-width:0;background-color:black;margin: 2% 15% 2% 15%;">
-                                                                                                                 <span class="person">USN:</span>
-                                                                                                                 <span class="detail">1BM19CS001</span><br />
-                                                                                                                 <hr style="height: 2px;border-width: 0;background-color: black;margin: 2% 15% 2% 15%;">
-                                                                                                                 <span class="person">SEMESTER:</span>
-                                                                                                                 <span class="detail">3rd</span></br>
-                                                                                                                 <hr style="height: 2px;border-width: 0;background-color: black;margin: 2% 15% 2% 15%;">
-                                                                                                                 <span class="person">SECTION: </span>
-                                                                                                                 <span class="detail">A</span></br>
-                                                                                                                 <hr style="height: 2px;border-width: 0;background-color: black;margin: 2% 15% 2% 15%;">
-                                                                                                                 <span class="person">EMAIL: </span>
-                                                                                                                 <span class="detail">student@bmsce.ac.in</span><br />
-                                                                                                                 <hr style="height: 2px;border-width: 0;background-color: black;margin: 2% 15% 2% 15%;">
-                                                                                                                 <span class="person">PHONE: </span>
-                                                                                                                 <span class="detail">9999999999</span><br />
-=======
+
                                           <span class="detail"><?php print "{$loggedin_name}" ?></span><br />
                                                                                                       <hr style="height:2px;border-width:0;background-color:black;margin: 2% 15% 2% 15%;">
                                           <span class="person">USN:</span>
@@ -229,7 +199,7 @@
                                                                                                                  <hr style="height: 2px;border-width: 0;background-color: black;margin: 2% 15% 2% 15%;">
                                                                                                                  <span class="person">PHONE: </span>
                                                                                                                  <span class="detail"><?php print "{$loggedin_phone}" ?></span><br />
->>>>>>> 844ea391056acb6e5f5c5e8d46ee96ab8879c717
+
                                                                                                              </div>
         </section>
     </section>
