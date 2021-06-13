@@ -157,7 +157,7 @@
 
         </section>
         <section class="column" id="main">
-            <button type="submit"><a href="student_eligibility.html">Check Eligibility</a></button>
+            <button type="submit"><a href="add_exam.php">Add Exam and Timetable</a></button>
             <button type="submit"><a href="submission.html">Check Exam Form Submission Status</a>  </button>
 
 
