@@ -2,6 +2,26 @@
 <html lang="en">
 
 <head>
+    <?php
+    include('session_admin.php');
+    $ename = $_POST["name"];
+    $esem = $_POST["sem"];
+    $eyear = $_POST["year"];
+    $emonth = $_POST["month"];
+    // To protect MySQL injection (more detail about MySQL injection)
+    $eename = stripslashes($ename);
+    $esem = stripslashes($esem);
+    $eyear = stripslashes($eyear);
+    $emonth = stripslashes($emonth);
+
+    $ename = mysqli_real_escape_string($conn, $ename);
+    $esem = mysqli_real_escape_string($conn, $esem);
+    $eyear = mysqli_real_escape_string($conn, $eyear);
+    $emonth = mysqli_real_escape_string($conn, $emonth);
+    // echo "{$loggedin_name}";
+    //echo " {$eyear}";
+
+    ?>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
@@ -16,10 +36,12 @@
             float: right;
             width: 100%;
             background-color: lightblue;
+
         }
 
         form {
             width: 100%;
+
         }
 
 
@@ -42,10 +64,12 @@
 
         input[type=text],
         input[type=password],
+        input[type=time],
+        input[type=date],
         select {
             width: 75%;
             padding: 15px;
-            margin: 5px 0 22px 0;
+            margin: 5% 0 10% 10%;
             border: none;
             background: #f1f1f1;
         }
@@ -56,9 +80,6 @@
             outline: none;
         }
 
-        .shift {
-            margin-left: 1%;
-        }
 
         .shift>label,
         .left {
@@ -88,9 +109,14 @@
             opacity: 1;
         }
 
-        div {
+        div .div {
             display: inline-block;
             width: 18%;
+        }
+
+        div .left {
+            display: block;
+            margin-left: 10%;
         }
     </style>
 
@@ -98,37 +124,61 @@
 
 <body>
     <section class="right">
-        <form action="submit.html" name="myform" onsubmit="return validateform()">
+        <form method="POST" action="timetable_add.php" name="form2">
 
             <center>
                 <h1> Add timetable</h1>
             </center>
             <hr>
-            <div>
-                <label class="field left">
-                    Course Code :
-                </label>
-                <input type="text" name="course code" placeholder="course code" required autocomplete="off">
-            </div>
-            <div>
-                <label class="field left">
-                    Course Name :
-                </label>
-                <input type="text" name="course name" placeholder="course name" required autocomplete="off">
-            </div>
-            <div>
-                <label class="field left">
-                    Department:
-                </label>
-                <input type="text" name="department" placeholder="department" required autocomplete="off">
-            </div>
-            <div>
-                <label for="Date" class="field left">Date:</label>
-                <input type="date" id="Date" name="Date">
-            </div>
-            <div>
-                <label for="time" class="field left">Time:</label>
-                <input type="time" id="time" name="time">
+            <?php
+            $tbl_name1 = "course";
+            $tbl_name2 = "department";
+            $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
+            mysqli_select_db($conn, "$db_name") or die("cannot select DB");
+
+            $sql = "SELECT c.course_id AS cid,c.name as cname,d.name as dname FROM $tbl_name2 d,$tbl_name1 c
+                    WHERE c.sem='$esem' and c.dept_id = d.dept_id order by d.dept_id";
+            $res = mysqli_query($conn, $sql);
+            $_SESSION["count1"] = mysqli_num_rows($res);
+            $j = 0;
+            while ($row = mysqli_fetch_assoc($res)) {
+                $i = 0;
+
+                $array[$j][$i++] = $row['cid'];
+                $array[$j][$i++] = $row['cname'];
+                $array[$j][$i++] = $row['dname'];
+                $j++;
+            }
+            ?>
+
+            <div class="left">
+                <div class="div">
+
+                    <label class="field left">
+                        Course Code :
+                    </label>
+                    <input type="text" name="course code" placeholder="course code" required autocomplete="off">
+                </div>
+                <div class="div">
+                    <label class="field left">
+                        Course Name :
+                    </label>
+                    <input type="text" name="course name" placeholder="course name" required autocomplete="off">
+                </div>
+                <div class="div">
+                    <label class="field left">
+                        Department:
+                    </label>
+                    <input type="text" name="department" placeholder="department" required autocomplete="off">
+                </div>
+                <div class="div">
+                    <label for="Date" class="field left">Date:</label>
+                    <input type="date" id="Date" name="Date">
+                </div>
+                <div class="div">
+                    <label for="time" class="field left">Time:</label>
+                    <input type="time" id="time" name="time">
+                </div>
             </div>
             <input type="submit" class="registerbtn" value="NEXT">
 

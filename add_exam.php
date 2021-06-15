@@ -123,7 +123,7 @@
 <body>
 
     <section class="right">
-        <form action="add_timetable.php" name="myform ">
+        <form method="POST" action="add_timetable.php" name="form2">
 
             <center>
                 <h1> Exam Registeration Form</h1>
@@ -134,7 +134,7 @@
                     Exam Name :
                 </label>
 
-                <select required>
+                <select required name="name">
                     <option value="Exam Name">Exam Name</option>
                     <option value="SEMESTER END EXAMINATION">SEMESTER END EXAMINATION</option>
                     <option value="IMPROVEMENT EXAMINATION">IMPROVEMENT EXAMINATION</option>
@@ -145,16 +145,16 @@
                     Semester:
                 </label>
 
-                <select required>
+                <select required name="sem">
                     <option value="Semester">Semester</option>
-                    <option value="I"> I </option>
-                    <option value="II"> II</option>
-                    <option value="III"> III</option>
-                    <option value="IV"> IV</option>
-                    <option value="V"> V</option>
-                    <option value="VI"> VI</option>
-                    <option value="VII"> VII</option>
-                    <option value="VIII"> VIII</option>
+                    <option value="1"> I </option>
+                    <option value="2"> II</option>
+                    <option value="3"> III</option>
+                    <option value="4"> IV</option>
+                    <option value="5"> V</option>
+                    <option value="6"> VI</option>
+                    <option value="7"> VII</option>
+                    <option value="8"> VIII</option>
                 </select>
             </div>
             <br>
@@ -162,7 +162,7 @@
                 <label class="field left">
                     Start_year:
                 </label>
-                <select id="ddlYears"></select>
+                <select id="ddlYears" name="year"></select>
                 <script type="text/javascript">
                     window.onload = function() {
                         //Reference the DropDownList.
@@ -186,7 +186,7 @@
                 <label class="field left">
                     Start_month:
                 </label>
-                <select required>
+                <select required name="month">
                     <option value="month">month</option>
                     <option value="01">January</option>
                     <option value="02">February</option>
