@@ -20,11 +20,10 @@ $sql="SELECT * FROM $tbl_name WHERE email='$un' and password='$pwd'";
 $result=mysqli_query($conn,$sql);
 $count=mysqli_num_rows($result);
 if($count==1){
-    #$_SESSION["email"] = $un;
+$_SESSION["email"] = $un;
 header("location:admin_homepage.php"); 
 }
 else {
 $_SESSION["msg"] = "Please check your email and password";
 header("location:admin_login.php");
 }
-?>  

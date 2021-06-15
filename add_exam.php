@@ -111,40 +111,21 @@
         div .name>input {
             width: 80%;
         }
-
-        #text {
-            margin: 1%;
-            color: red;
-            display: none;
-        }
-
-        #active {
-            color: #feea03;
-            font-size: 130%;
-            line-height: 120%;
-            font-weight: 200;
-        }
-
-        #active1 {
-            color: #feea03;
-            font-weight: 200;
-        }
     </style>
 
 </head>
 
 <body>
-    <button class="logout"><a href="login.html">LOGOUT</a></button>
 
     <section class="right">
-        <form action="submit.html" name="myform" onsubmit="return validateform()">
+        <form action="add_timetable.php" name="myform ">
 
             <center>
                 <h1> Exam Registeration Form</h1>
             </center>
             <hr>
             <div>
-                <label class="field left">
+                <label class=" field left">
                     Exam Name :
                 </label>
 

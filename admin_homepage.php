@@ -1,5 +1,6 @@
 ﻿<!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Admin homepage</title>
@@ -56,15 +57,15 @@
             line-height: 170%;
         }
 
-            .list li::before {
-                content: "\f0a4";
-                font-family: "Font Awesome 5 Free";
-            }
+        .list li::before {
+            content: "\f0a4";
+            font-family: "Font Awesome 5 Free";
+        }
 
-            .list a {
-                text-decoration: none;
-                font-size: 110%;
-            }
+        .list a {
+            text-decoration: none;
+            font-size: 110%;
+        }
 
         h2 {
             font-weight: 130%;
@@ -93,9 +94,9 @@
 
         #main button {
             background-color: #4CAF50;
-            font-size:120%;
+            font-size: 120%;
             width: 60%;
-            height:10%;
+            height: 10%;
             color: black;
             margin: 8%;
             border: none;
@@ -123,9 +124,10 @@
         a:hover {
             color: aqua;
         }
+
         input[type=text] {
             width: 80%;
-            height:10%;
+            height: 10%;
             padding: 15px;
             margin: 30% 0 5% 0;
             display: inline-block;
@@ -134,18 +136,20 @@
             position:
         }
 
-            input[type=text]:focus {
-                background-color: #baf7b6;
-                outline: none;
-            }
-        #add{
-            padding:2%;
-            width:40;
+        input[type=text]:focus {
+            background-color: #baf7b6;
+            outline: none;
+        }
+
+        #add {
+            padding: 2%;
+            width: 40;
         }
     </style>
 
 
 </head>
+
 <body>
     <div class="container">
 
@@ -158,7 +162,7 @@
         </section>
         <section class="column" id="main">
             <button type="submit"><a href="add_exam.php">Add Exam and Timetable</a></button>
-            <button type="submit"><a href="submission.html">Check Exam Form Submission Status</a>  </button>
+            <button type="submit"><a href="submission.html">Check Exam Form Submission Status</a> </button>
 
 
         </section>
@@ -178,7 +182,7 @@
             <input type='text' id='idea'><br />
             <input type="button" id="add" value="Add New">
             <script>
-    document.getElementById("add").onclick = function () {
+                document.getElementById("add").onclick = function() {
 
                     var node = document.createElement("Li");
                     var text = document.getElementById("idea").value;
@@ -191,6 +195,7 @@
 
         </section>
     </div>
-    
+
 </body>
+
 </html>
