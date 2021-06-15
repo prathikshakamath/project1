@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,9 +22,9 @@
             width: 100%;
         }
 
-        
 
-        
+
+
 
         .logout {
             position: fixed;
@@ -52,7 +53,9 @@
             background-color: lightblue;
         }
 
-        input[type=text], input[type=password], select {
+        input[type=text],
+        input[type=password],
+        select {
             width: 50%;
             padding: 15px;
             margin: 5px 0 22px 0;
@@ -61,20 +64,22 @@
             background: #f1f1f1;
         }
 
-            input[type=text]:focus, input[type=password]:focus {
-                background-color: #f7ef86;
-                outline: none;
-            }
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: #f7ef86;
+            outline: none;
+        }
 
         .shift {
             margin-left: 1%;
         }
 
-            .shift > label, .left {
-                display: inline-block;
-                width: 10%;
-                font-weight: bold;
-            }
+        .shift>label,
+        .left {
+            display: inline-block;
+            width: 10%;
+            font-weight: bold;
+        }
 
         .right hr {
             border: 1px solid #f1f1f1;
@@ -85,16 +90,16 @@
             background-color: #4CAF50;
             color: white;
             padding: 16px 20px;
-            margin-left:45%;
+            margin-left: 45%;
             border: none;
             cursor: pointer;
             width: 15%;
             opacity: 0.9;
         }
 
-            .registerbtn:hover {
-                opacity: 1;
-            }
+        .registerbtn:hover {
+            opacity: 1;
+        }
 
         label .field {
             display: inline-block;
@@ -107,91 +112,56 @@
             font-weight: bold;
         }
 
-            div .name > input {
-                width: 80%;
-            }
-
-        #text {
-            margin: 1%;
-            color: red;
-            display: none;
-        }
-        #active {
-            color: #feea03;
-            font-size: 130%;
-            line-height: 120%;
-            font-weight: 200;
-        }
-
-        #active1 {
-            color: #feea03;
-            font-weight: 200;
+        div .name>input {
+            width: 80%;
         }
     </style>
 
 </head>
+
 <body>
-    <button class="logout"><a href="login.html">LOGOUT</a></button>
-   
     <section class="right">
         <form action="submit.html" name="myform" onsubmit="return validateform()">
 
-            <center>  <h1> Exam Registeration Form</h1> </center>
+            <center>
+                <h1> Add timetable</h1>
+            </center>
             <hr>
-                     <div>
-                        <label class="field left">
-                            Course Name :
-                        </label>
+            <div>
+                <label class="field left">
+                    Course Code :
+                </label>
+                <input type="text" name="course code" placeholder="course code" required autocomplete="off">
+            </div>
 
-                        <select required>
-                            <option value="Exam Name">Course Name</option>
-                            <option value="SEMESTER END EXAMINATION">SEMESTER END EXAMINATION</option>
-                            <option value="IMPROVEMENT EXAMINATION">IMPROVEMENT EXAMINATION</option>
-                        </select>
-                    </div>
+            <div>
+                <label class="field left">
+                    Course Name :
+                </label>
+                <input type="text" name="course name" placeholder="course name" required autocomplete="off">
+            </div>
 
-                    <div>
-                        <label class="field left">
-                            Course Code :
-                        </label>
+            <div>
+                <label class="field left">
+                    Department:
+                </label>
+                <input type="text" name="department" placeholder="department" required autocomplete="off">
+            </div>
+            <div>
+                <label for="Date" class="field left">Date:</label>
+                <input type="date" id="Date" name="Date">
+            </div>
+            <div>
+                <label for="time" class="field left">Time:</label>
+                <input type="time" id="time" name="time">
+            </div>
 
-                        <select required>
-                            <option value="Exam Name">Course Code</option>
-                            <option value="SEMESTER END EXAMINATION">SEMESTER END EXAMINATION</option>
-                            <option value="IMPROVEMENT EXAMINATION">IMPROVEMENT EXAMINATION</option>
-                        </select>
-                    </div>
+            <br>
 
-                    <div>
-                        <label class="field left">
-                            Department:
-                        </label>
+            <input type="submit" class="registerbtn" value="NEXT">
 
-                        <select required>
-                        <option value="Semester">Department</option>
-                        <option value="I"> I </option>
-                        <option value="II"> II</option>
-                        <option value="III"> III</option>
-                        <option value="IV"> IV</option>
-                        <option value="V" > V</option>
-                        <option value="VI"> VI</option>
-                        <option value="VII"> VII</option>
-                        <option value="VIII"> VIII</option>
-                        </select>
-                    </div>
-                    <br>
-             <label for="Date">Date:</label>
-  <input type="date" id="Date" name="Date">
-  <input type="submit">
-   <label for="Date">Time:</label>
-  <input type="time" id="Date" name="Date">
-  <input type="submit">
-
-  <br>
-
-                <input type="submit" class="registerbtn" value="NEXT">
-            
         </form>
     </section>
 </body>
+
 </html>
