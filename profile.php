@@ -1,12 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 
-<?php
- include('session.php');
- //session_start();
-?>
+    <?php
+    include('session.php');
+    //session_start();
+    ?>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
@@ -43,26 +44,28 @@
             text-align: center;
         }
 
-            .sidenav a, .dropdown-btn {
-                padding: 2%;
-                width: 100%;
-                text-decoration: none;
-                font-size: 18px;
-                color: #ffffff;
-                display: inline-block;
-                border: none;
-                background: none;
-                text-align: center;
-                cursor: pointer;
-                outline: none;
-            }
+        .sidenav a,
+        .dropdown-btn {
+            padding: 2%;
+            width: 100%;
+            text-decoration: none;
+            font-size: 18px;
+            color: #ffffff;
+            display: inline-block;
+            border: none;
+            background: none;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+        }
 
         .dropdown-container {
             display: none;
             background-color: #0a0a0a;
         }
 
-        .sidenav a:hover, .dropdown-btn:hover {
+        .sidenav a:hover,
+        .dropdown-btn:hover {
             color: #e27464;
         }
 
@@ -97,33 +100,38 @@
             text-align: center;
         }
 
-        .detail, .person {
+        .detail,
+        .person {
             display: inline-block;
             margin-bottom: 2%;
         }
 
-       
+
 
         .sidenav img {
             width: 75%;
             margin-top: 5%;
             margin-bottom: 5%;
         }
+
         body {
             background-image: linear-gradient(to right, white, #4fb4e4);
-            
+
             height: 100%;
         }
-        .box{
-            padding-top:3%;
-            padding-bottom:2%;
+
+        .box {
+            padding-top: 3%;
+            padding-bottom: 2%;
             margin: 0 25% 0 25%;
-           border:2px solid black;
-           
+            border: 2px solid black;
+
         }
+
         .person {
             font-weight: bold;
         }
+
         #active {
             color: #feea03;
             font-size: 130%;
@@ -133,6 +141,7 @@
     </style>
 
 </head>
+
 <body>
 
 
@@ -140,10 +149,14 @@
     <nav class="sidenav">
         <img src="images/bmsce_logo.png" />
         <hr style="height:2px;border-width:0;background-color:#66fcf1">
-        <a href="student_homepage.php">HOME</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-        <a href="profile.php" id="active">View Profile</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-        <a href="course.php">Courses</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-        <a href="eligibility.php">View eligibility</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
+        <a href="student_homepage.php">HOME</a>
+        <hr style="height:2px;border-width:0;background-color:#66fcf1">
+        <a href="profile.php" id="active">View Profile</a>
+        <hr style="height:2px;border-width:0;background-color:#66fcf1">
+        <a href="course.php">Courses</a>
+        <hr style="height:2px;border-width:0;background-color:#66fcf1">
+        <a href="eligibility.php">View eligibility</a>
+        <hr style="height:2px;border-width:0;background-color:#66fcf1">
 
 
         <button class="dropdown-btn">
@@ -166,7 +179,7 @@
         var i;
 
         for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function () {
+            dropdown[i].addEventListener("click", function() {
                 this.classList.toggle("active");
                 var dropdownContent = this.nextElementSibling;
                 if (dropdownContent.style.display === "block") {
@@ -178,31 +191,32 @@
         }
     </script>
     <section class="right" id="profile">
-        <section class="box">   <img src="images/profilepic.jpg" width="200px" style="margin-top:-1%;"><br /><br />
-        <div>
+        <section class="box"> <img src="images/profilepic.jpg" width="200px" style="margin-top:-1%;"><br /><br />
+            <div>
 
-           <span class="person">NAME: </span>
+                <span class="person">NAME: </span>
 
-                                          <span class="detail"><?php print "{$loggedin_name}" ?></span><br />
-                                                                                                      <hr style="height:2px;border-width:0;background-color:black;margin: 2% 15% 2% 15%;">
-                                          <span class="person">USN:</span>
-                                                                                                                 <span class="detail"><?php echo $row['usn']; ?></span><br />
-                                                                                                                 <hr style="height: 2px;border-width: 0;background-color: black;margin: 2% 15% 2% 15%;">
-                                                                                                                 <span class="person">SEMESTER:</span>
-                                                                                                                 <span class="detail"><?php echo $row['current_sem']; ?></span></br>
-                                                                                                                 <hr style="height: 2px;border-width: 0;background-color: black;margin: 2% 15% 2% 15%;">
-                                                                                                                 <span class="person">SECTION: </span>
-                                                                                                                 <span class="detail"><?php echo $row['section']; ?></span></br>
-                                                                                                                 <hr style="height: 2px;border-width: 0;background-color: black;margin: 2% 15% 2% 15%;">
-                                                                                                                 <span class="person">EMAIL: </span>
-                                                                                                                 <span class="detail"><?php echo $row['email'];?></span></br>
-                                                                                                                 <hr style="height: 2px;border-width: 0;background-color: black;margin: 2% 15% 2% 15%;">
-                                                                                                                 <span class="person">PHONE: </span>
-                                                                                                                 <span class="detail"><?php print "{$loggedin_phone}" ?></span><br />
+                <span class="detail"><?php print "{$loggedin_name}" ?></span><br />
+                <hr style="height:2px;border-width:0;background-color:black;margin: 2% 15% 2% 15%;">
+                <span class="person">USN:</span>
+                <span class="detail"><?php echo $row['usn']; ?></span><br />
+                <hr style="height: 2px;border-width: 0;background-color: black;margin: 2% 15% 2% 15%;">
+                <span class="person">SEMESTER:</span>
+                <span class="detail"><?php echo $row['current_sem']; ?></span></br>
+                <hr style="height: 2px;border-width: 0;background-color: black;margin: 2% 15% 2% 15%;">
+                <span class="person">SECTION: </span>
+                <span class="detail"><?php echo $row['section']; ?></span></br>
+                <hr style="height: 2px;border-width: 0;background-color: black;margin: 2% 15% 2% 15%;">
+                <span class="person">EMAIL: </span>
+                <span class="detail"><?php echo $row['email']; ?></span></br>
+                <hr style="height: 2px;border-width: 0;background-color: black;margin: 2% 15% 2% 15%;">
+                <span class="person">PHONE: </span>
+                <span class="detail"><?php print "{$loggedin_phone}" ?></span><br />
 
-                                                                                                             </div>
+            </div>
         </section>
     </section>
 
 </body>
+
 </html>
