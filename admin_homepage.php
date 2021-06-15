@@ -2,6 +2,11 @@
 <html lang="en">
 
 <head>
+    <?php
+    include('session_admin.php');
+    // echo "{$loggedin_name}";
+    ?>
+
     <meta charset="UTF-8">
     <title>Admin homepage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -133,7 +138,7 @@
             display: inline-block;
             border: 1px solid black;
             background: #f1f1f1;
-            position:
+
         }
 
         input[type=text]:focus {

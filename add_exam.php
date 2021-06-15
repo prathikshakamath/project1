@@ -2,6 +2,11 @@
 <html lang="en">
 
 <head>
+    <?php
+    include('session_admin.php');
+    //session_start();
+    ?>
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
