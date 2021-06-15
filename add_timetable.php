@@ -24,19 +24,6 @@
 
 
 
-
-
-        .logout {
-            position: fixed;
-            background-color: black;
-            color: white;
-            border-color: #ff0000;
-            border: 3px solid red;
-            top: 1%;
-            left: 93%;
-            padding: 0.5%;
-        }
-
         .submit {
             color: white;
             background-color: black;
@@ -56,10 +43,9 @@
         input[type=text],
         input[type=password],
         select {
-            width: 50%;
+            width: 75%;
             padding: 15px;
             margin: 5px 0 22px 0;
-            display: inline-block;
             border: none;
             background: #f1f1f1;
         }
@@ -76,8 +62,7 @@
 
         .shift>label,
         .left {
-            display: inline-block;
-            width: 10%;
+            display: block;
             font-weight: bold;
         }
 
@@ -85,6 +70,8 @@
             border: 1px solid #f1f1f1;
             margin-bottom: 25px;
         }
+
+
 
         .registerbtn {
             background-color: #4CAF50;
@@ -101,19 +88,9 @@
             opacity: 1;
         }
 
-        label .field {
+        div {
             display: inline-block;
-        }
-
-        div .name {
-            display: inline-block;
-            width: 28%;
-            padding: 1%;
-            font-weight: bold;
-        }
-
-        div .name>input {
-            width: 80%;
+            width: 18%;
         }
     </style>
 
@@ -133,14 +110,12 @@
                 </label>
                 <input type="text" name="course code" placeholder="course code" required autocomplete="off">
             </div>
-
             <div>
                 <label class="field left">
                     Course Name :
                 </label>
                 <input type="text" name="course name" placeholder="course name" required autocomplete="off">
             </div>
-
             <div>
                 <label class="field left">
                     Department:
@@ -155,9 +130,6 @@
                 <label for="time" class="field left">Time:</label>
                 <input type="time" id="time" name="time">
             </div>
-
-            <br>
-
             <input type="submit" class="registerbtn" value="NEXT">
 
         </form>
