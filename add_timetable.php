@@ -66,17 +66,28 @@
         input[type=password],
         input[type=time],
         input[type=date],
-        select,
-        span {
-            width: 75%;
-            padding: 15px;
+        select {
+            width: 80%;
+            font-size: small;
+            padding: 5%;
             margin: 5% 0 10% 10%;
+            height: 10%;
             border: none;
             background: #f1f1f1;
         }
 
-        input[type=text]:focus,
-        input[type=password]:focus {
+        span {
+            display: inline-block;
+            width: 80%;
+            height: 10%;
+            background: #f1f1f1;
+            margin: 5% 0 10% 10%;
+            padding: 5%;
+            font-size: small;
+        }
+
+        input[type=time]:focus,
+        input[type=date]:focus {
             background-color: #f7ef86;
             outline: none;
         }
@@ -112,7 +123,7 @@
 
         div .div {
             display: inline-block;
-            width: 18%;
+            width: 19%;
         }
 
         div .left {
