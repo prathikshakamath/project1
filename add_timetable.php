@@ -4,23 +4,23 @@
 <head>
     <?php
     include('session_admin.php');
-    $ename = $_POST["name"];
-    $esem = $_POST["sem"];
-    $eyear = $_POST["year"];
-    $emonth = $_POST["month"];
+    $_SESSION['ename'] = $_POST["name"];
+    $_SESSION['esem'] = $_POST["sem"];
+    $_SESSION['eyear'] = $_POST["year"];
+    $_SESSION['emonth'] = $_POST["month"];
     // To protect MySQL injection (more detail about MySQL injection)
-    $eename = stripslashes($ename);
-    $esem = stripslashes($esem);
-    $eyear = stripslashes($eyear);
-    $emonth = stripslashes($emonth);
+    $_SESSION['ename'] = stripslashes($_SESSION['ename']);
+    $_SESSION['esem'] = stripslashes($_SESSION['esem']);
+    $_SESSION['eyear'] = stripslashes($_SESSION['eyear']);
+    $_SESSION['emonth'] = stripslashes($_SESSION['emonth']);
 
-    $ename = mysqli_real_escape_string($conn, $ename);
-    $esem = mysqli_real_escape_string($conn, $esem);
-    $eyear = mysqli_real_escape_string($conn, $eyear);
-    $emonth = mysqli_real_escape_string($conn, $emonth);
+    $_SESSION['ename'] = mysqli_real_escape_string($conn, $_SESSION['ename']);
+    $_SESSION['esem'] = mysqli_real_escape_string($conn, $_SESSION['esem']);
+    $_SESSION['eyear'] = mysqli_real_escape_string($conn, $_SESSION['eyear']);
+    $_SESSION['emonth'] = mysqli_real_escape_string($conn, $_SESSION['emonth']);
     // echo "{$loggedin_name}";
-    //echo " {$eyear}";
-
+    $esem = $_SESSION["esem"];
+    // echo "{$er}";
     ?>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -136,7 +136,7 @@
 
 <body>
     <section class="right">
-        <form method="POST" action="timetable_add.php" name="form2">
+        <form method="POST" action="add.php" name="form2">
 
             <center>
                 <h1> Add timetable</h1>
@@ -187,11 +187,11 @@
                     </div>
                     <div class="div">
                         <label for="Date" class="field left">Date:</label>
-                        <input type="date" id="Date" name="Date">
+                        <input type="date" id="Date" name="date[]">
                     </div>
                     <div class="div">
                         <label for="time" class="field left">Time:</label>
-                        <input type="time" id="time" name="time">
+                        <input type="time" id="time" name="time[]">
                     </div>
                 <?php } ?>
             </div>
