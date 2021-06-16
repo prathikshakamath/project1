@@ -66,7 +66,8 @@
         input[type=password],
         input[type=time],
         input[type=date],
-        select {
+        select,
+        span {
             width: 75%;
             padding: 15px;
             margin: 5% 0 10% 10%;
@@ -152,33 +153,36 @@
             ?>
 
             <div class="left">
-                <div class="div">
+                <?php
+                for ($i = 0; $i < $_SESSION["count1"]; $i++) {  ?>
+                    <div class="div">
 
-                    <label class="field left">
-                        Course Code :
-                    </label>
-                    <input type="text" name="course code" placeholder="course code" required autocomplete="off">
-                </div>
-                <div class="div">
-                    <label class="field left">
-                        Course Name :
-                    </label>
-                    <input type="text" name="course name" placeholder="course name" required autocomplete="off">
-                </div>
-                <div class="div">
-                    <label class="field left">
-                        Department:
-                    </label>
-                    <input type="text" name="department" placeholder="department" required autocomplete="off">
-                </div>
-                <div class="div">
-                    <label for="Date" class="field left">Date:</label>
-                    <input type="date" id="Date" name="Date">
-                </div>
-                <div class="div">
-                    <label for="time" class="field left">Time:</label>
-                    <input type="time" id="time" name="time">
-                </div>
+                        <label class="field left">
+                            Course Code :
+                        </label>
+                        <?php echo "<span>{$array[$i][0]}</span>"; ?>
+                    </div>
+                    <div class="div">
+                        <label class="field left">
+                            Course Name :
+                        </label>
+                        <?php echo "<span>{$array[$i][1]}</span>"; ?>
+                    </div>
+                    <div class="div">
+                        <label class="field left">
+                            Department:
+                        </label>
+                        <?php echo "<span>{$array[$i][2]}</span>"; ?>
+                    </div>
+                    <div class="div">
+                        <label for="Date" class="field left">Date:</label>
+                        <input type="date" id="Date" name="Date">
+                    </div>
+                    <div class="div">
+                        <label for="time" class="field left">Time:</label>
+                        <input type="time" id="time" name="time">
+                    </div>
+                <?php } ?>
             </div>
             <input type="submit" class="registerbtn" value="NEXT">
 
