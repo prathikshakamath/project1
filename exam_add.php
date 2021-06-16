@@ -1,5 +1,4 @@
 <?php
-include('session_admin.php');
 $_SESSION['ename'] = $_POST["name"];
 $_SESSION['esem'] = $_POST["sem"];
 $_SESSION['eyear'] = $_POST["year"];

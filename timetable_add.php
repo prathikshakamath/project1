@@ -1,7 +1,7 @@
 <?php
-if (session_id() == '') {
-    session_start();
-}
+
+include('session_admin.php');
+
 
 
 // To protect MySQL injection (more detail about MySQL injection)
@@ -35,3 +35,4 @@ while ($row = mysqli_fetch_assoc($res)) {
     $array[$j][$i++] = $row['dname'];
     $j++;
 }
+
