@@ -1,4 +1,12 @@
 <html lang="en">
+<<<<<<< HEAD
+=======
+    
+<?php
+include('session_admin.php');
+?>
+
+>>>>>>> d0c95f71e93e9f8a26fba9ddc6c89d553babc4b0
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
