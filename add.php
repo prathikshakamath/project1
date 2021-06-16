@@ -1,5 +1,5 @@
 <?php
-include('timetable_add.php');
+include('session_admin.php');
 $ename = $_SESSION["ename"];
 $esem = $_SESSION["esem"];
 $eyear = $_SESSION["eyear"];
@@ -30,8 +30,9 @@ $time = "03:00:00";
 $secs = strtotime($time) - strtotime("00:00:00");
 //echo "{$array[1][2]}";
 for ($i = 0; $i < $_SESSION["count1"]; $i++) {
-    $cid = $array[$i][0];
-    $etime = date("H:i:s", strtotime($stime) + $secs);
+    $cid = $_SESSION["data"][$i][0];
+    // echo $cid;
+    $etime = "00:00:00";
     $sql = "INSERT INTO timetable(exam_id,course_id,admin_id,start_time,end_time,exam_date) VALUES ('$id','$cid','$loggedin_id','$stime[$i]','$etime','$date[$i]')";
     $result = mysqli_query($conn, $sql);
 }

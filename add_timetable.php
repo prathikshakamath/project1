@@ -193,7 +193,9 @@
                         <label for="time" class="field left">Time:</label>
                         <input type="time" id="time" name="time[]">
                     </div>
-                <?php } ?>
+                <?php }
+                $_SESSION["data"] = $array;
+                print_r($_SESSION); ?>
             </div>
             <input type="submit" class="registerbtn" value="NEXT">
 
