@@ -174,7 +174,7 @@
 
 
         <section class="column side" id="right">
-            <button class="logout"><a href="admin_login.php">LOGOUT</a></button>
+            <button class="logout"><a href="logout_admin.php">LOGOUT</a></button>
             <h2 style="font-size: 200%;" class="head">Announcements</h2>
             <ul class="list" id="list">
                 <li>SEE exams are scheduled to be held from 17/11/2020.Find the timetable <a href="timetable.html">here</a></li>

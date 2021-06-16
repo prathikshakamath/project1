@@ -1,5 +1,4 @@
 <?php
-session_start();
 $host="localhost"; 
 $username="root"; 
 $password=""; 
@@ -21,10 +20,10 @@ $result=mysqli_query($conn,$sql);
 $count=mysqli_num_rows($result);
 if($count==1){
     $_SESSION["user"] = $un;
+    session_start();
 header("location:student_homepage.php");
 }
 else {
 $_SESSION["error"] = 'Please check your email and password';
 header("location:student_login.php");
 }
-?>

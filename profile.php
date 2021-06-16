@@ -145,7 +145,7 @@
 <body>
 
 
-    <button class="logout"><a href="student_homepage.php">LOGOUT</a></button>
+    <button class="logout"><a href="logout.php">LOGOUT</a></button>
     <nav class="sidenav">
         <img src="images/bmsce_logo.png" />
         <hr style="height:2px;border-width:0;background-color:#66fcf1">

@@ -1,19 +1,39 @@
 <?php
-$name=$_POST["name"];
-$age=$_POST["age"];
-$location =$_POST["location"];
-$salary=$_POST["salary"];
-// To protect MySQL injection (more detail about MySQL injection)
-$name = stripslashes($name);
-$age = stripslashes($age);
-$location = stripslashes($location);
-$salary = stripslashes($salary);
-$name = mysqli_real_escape_string($conn,$name);
-$age = mysqli_real_escape_string($conn,$age);
-$location = mysqli_real_escape_string($conn,$location);
-//echo "location- $location";
-$salary = mysqli_real_escape_string($conn,$salary);
+include('timetable_add.php');
+$ename = $_SESSION["ename"];
+$esem = $_SESSION["esem"];
+$eyear = $_SESSION["eyear"];
+$emonth = $_SESSION["emonth"];
 
-$sql="INSERT INTO employee(name,Age,location,salary) VALUES ('$name', '$age' ,'$location','$salary')";
-$result=mysqli_query($conn,$sql);
-?>
+$ename = stripslashes($ename);
+$esem = stripslashes($esem);
+$eyear = stripslashes($eyear);
+$emonth = stripslashes($emonth);
+$ename = mysqli_real_escape_string($conn, $ename);
+$esem = mysqli_real_escape_string($conn, $esem);
+$eyear = mysqli_real_escape_string($conn, $eyear);
+$emonth = mysqli_real_escape_string($conn, $emonth);
+
+$sql = "INSERT INTO exam(exam_id,name,start_year,start_month,sem,admin_id) VALUES (NULL,'$ename','$eyear','$emonth','$esem' ,'$loggedin_id')";
+$result = mysqli_query($conn, $sql);
+
+$tbl_name3 = "exam";
+$sql = "SELECT e.exam_id as id FROM $tbl_name3 e
+        WHERE e.name='$ename' and e.sem= '$esem' and e.start_year='$eyear' and e.start_month='$emonth' ";
+$res = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($res);
+$id = $row['id'];
+
+$stime = $_POST["time"];
+$date = $_POST["date"];
+
+//echo "{$array[1][2]}";
+for ($i = 0; $i < $_SESSION["count1"]; $i++) {
+    $cid = $array[$i][0];
+
+    $timestamp = strtotime($stime[$i]);
+    $etime = $timestamp + 3 * 360000;
+    $sql = "INSERT INTO timetable(exam_id,course_id,admin_id,start_time,end_time,exam_date) VALUES ('$id','$cid','$loggedin_id','$stime[$i]','$etime','$date[$i]')";
+    $result = mysqli_query($conn, $sql);
+}
+header('Location: submit.php');
