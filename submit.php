@@ -1,5 +1,4 @@
 <html lang="en">
-    
 <?php
 include('session_admin.php');
 ?>
