@@ -1,5 +1,5 @@
 <?php
-include('timetable_add.php');
+include('session_admin.php');
 $ename = $_SESSION["ename"];
 $esem = $_SESSION["esem"];
 $eyear = $_SESSION["eyear"];
