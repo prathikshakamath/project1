@@ -7,9 +7,9 @@ $tbl_name = "student";
 $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
 mysqli_select_db($conn, "$db_name") or die("cannot select DB");
 session_start();
-if (!isset($_SESSION["user"]) || $_SESSION["user"] == NULL) {
-    header("Location:student_login.php");
-}
+//if (!isset($_SESSION["user"]) || $_SESSION["user"] == NULL) {
+//    header("Location:student_login.php");
+//}
 $usermail = $_SESSION["user"];
 $sql = "SELECT * FROM $tbl_name WHERE email='$usermail'";
 $res = mysqli_query($conn, $sql);

@@ -1,4 +1,5 @@
 <?php
+session_start();
 $host="localhost"; 
 $username="root"; 
 $password=""; 
@@ -19,8 +20,7 @@ $sql="SELECT * FROM $tbl_name WHERE email='$un' and password='$pwd'";
 $result=mysqli_query($conn,$sql);
 $count=mysqli_num_rows($result);
 if($count==1){
-    $_SESSION["user"] = $un;
-    session_start();
+    $_SESSION["user"] = $un;   
 header("location:student_homepage.php");
 }
 else {
