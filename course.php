@@ -117,9 +117,9 @@
         <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-        <a href="timetable.html">Timetable</a>
-        <a href="instruction.html">Instructions</a>
-        <a href="form.html">Registration</a>
+        <a href="timetable.php">Timetable</a>
+        <a href="instruction.php">Instructions</a>
+        <a href="form.php">Registration</a>
     </div>
     <hr style="height:2px;border-width:0;background-color:#66fcf1">
 
