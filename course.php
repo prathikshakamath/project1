@@ -157,7 +157,7 @@
         $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
         mysqli_select_db($conn, "$db_name") or die("cannot select DB");
 
-        $sql = "SELECT c.course_id AS cid,c.name as name,c.credits as credits FROM $tbl_name2 ce,$tbl_name1 c,$tbl_name s 
+        $sql = "SELECT c.course_id AS cid,c.name as name,c.credits as credits, ce.reregistered as reregistered FROM $tbl_name2 ce,$tbl_name1 c,$tbl_name s 
     WHERE s.email='$usermail'and ce.sem=s.current_sem and s.usn=ce.usn and ce.course_id=c.course_id ";
         $res = mysqli_query($conn, $sql);
         $_SESSION["count1"] = mysqli_num_rows($res);
@@ -168,6 +168,7 @@
             $array[$j][$i++] = $row['cid'];
             $array[$j][$i++] = $row['name'];
             $array[$j][$i++] = $row['credits'];
+            $array[$j][$i++] = $row['reregistered'];
             $j++;
         }
         ?>
@@ -178,11 +179,12 @@
                 <th>COURSE CODE</th>
                 <th>COURSE TITLE</th>
                 <th>CREDITS</th>
+                <th>RE-REGISTERED</th>
             </tr>
             <?php
             $count = $_SESSION["count1"];
             for ($j = 0; $j < $count; $j++) {
-                echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td></tr>";
+                echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td><td>{$array[$j][3]}</td></tr>";
             }
             ?>
 
