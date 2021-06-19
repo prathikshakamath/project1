@@ -3,7 +3,7 @@
 
 <head>
     <?php
-    include('session_admin.php');
+    include('session.php');
     //session_start();
     ?>
 
