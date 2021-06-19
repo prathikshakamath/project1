@@ -1,4 +1,5 @@
 <?php
+//hello
 session_start();
 $host="localhost"; 
 $username="root"; 
