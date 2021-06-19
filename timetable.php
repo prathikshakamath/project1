@@ -3,6 +3,10 @@
 
 <head>
 
+<?php
+    include('session.php');
+    ?>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
@@ -157,49 +161,42 @@
         }
     </script>
     <section class="right">
+    <?php
+        $tbl_name3 = "timetable";
+        $tbl_name4 ="exam";
+        $tbl_name1 ="course";
+        $tbl_name2 ="course_enrolled";
+        $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
+        mysqli_select_db($conn, "$db_name") or die("cannot select DB");
+
+        $sql = "SELECT distinct t.course_id AS cid,c.name as name,t.exam_date as date  FROM $tbl_name3 t,$tbl_name4 e,$tbl_name1 c ,$tbl_name s,$tbl_name2 ce
+    WHERE s.email='$usermail'and ce.sem=s.current_sem and s.usn=ce.usn and t.course_id=c.course_id and e.exam_id=t.exam_id ";
+        $res = mysqli_query($conn, $sql);
+        $_SESSION["count1"] = mysqli_num_rows($res);
+        $j = 0;
+        while ($row = mysqli_fetch_assoc($res)) {
+            $i = 0;
+
+            $array[$j][$i++] = $row['cid'];
+            $array[$j][$i++] = $row['name'];
+            $array[$j][$i++] = $row['date'];
+            $j++;
+        }
+        ?>
         <h2>TIME TABLE</h2>
-        <p>FOR 3rd SEMESTER 2020-21</p>
+        <p>FOR SEMESTER : <?php echo " {$loggedin_sem}"; ?></p>
         <table>
             <tr>
+                <th>COURSE CODE</th>
+                <th>COURSE TITLE</th>
                 <th>DATE</th>
-                <th>TIMING</th>
-                <th>SUBJECT</th>
             </tr>
-            <tr>
-                <td>17-11-2020</td>
-                <td>09:30 to 12:30</td>
-                <td>Static and Discrete Mathematics</td>
-            </tr>
-            <tr>
-                <td>18-11-2020</td>
-                <td>09:30 to 12:30</td>
-                <td>Microprocessors and Microcontrollers</td>
-            </tr>
-            <tr>
-                <td>19-11-2020</td>
-                <td>09:30 to 12:30</td>
-                <td>OOJ Programming</td>
-            </tr>
-            <tr>
-                <td>20-11-2020</td>
-                <td>09:30 to 12:30</td>
-                <td>Data Structure</td>
-            </tr>
-            <tr>
-                <td>21-11-2020</td>
-                <td>09:30 to 12:30</td>
-                <td>COA</td>
-            </tr>
-            <tr>
-                <td>23-11-2020</td>
-                <td>09:30 to 12:30</td>
-                <td>Logic Design</td>
-            </tr>
-            <tr>
-                <td>24-11-2020</td>
-                <td>09:30 to 12:30</td>
-                <td>Environment Studies</td>
-            </tr>
+            <?php
+            $count = $_SESSION["count1"];
+            for ($j = 0; $j < $count; $j++) {
+                echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td></tr>";
+            }
+            ?> 
         </table>
     </section>
 </body>
