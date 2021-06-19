@@ -153,9 +153,9 @@
     </script>
 
     <nav class="link5">
-        <a href="form.html">Exam Registration</a>
-        <a href="instruction.html">Exam Instruction</a>
-        <a href="timetable.html">Exam timetable</a>
+        <a href="exam.php">Exam Registration</a>
+        <a href="instruction.php">Exam Instruction</a>
+        <a href="timetable.php">Exam timetable</a>
     </nav>
     <section class="right" id="announce">
         <h2 style="font-size: 200%;" class="head">Updates</h2>

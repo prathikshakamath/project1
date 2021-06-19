@@ -129,7 +129,7 @@
     <div class="dropdown-container">
         <a href="timetable.php">Timetable</a>
         <a href="instruction.php" id="active1">Instructions</a>
-        <a href="form.php">Registration</a>
+        <a href="exam.php">Registration</a>
     </div>
     <hr style="height:2px;border-width:0;background-color:#66fcf1">
 

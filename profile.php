@@ -167,7 +167,7 @@
 
             <a href="timetable.php">Timetable</a>
             <a href="instruction.php">Instructions</a>
-            <a href="form.php">Registration</a>
+            <a href="exam.php">Registration</a>
 
         </div>
         <hr style="height:2px;border-width:0;background-color:#66fcf1">

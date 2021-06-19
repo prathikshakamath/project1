@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<?php
- include('session.php');
-?>
+    <?php
+    include('session.php');
+    ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
@@ -25,26 +26,28 @@
             text-align: center;
         }
 
-            .sidenav a, .dropdown-btn {
-                padding: 2%;
-                width: 100%;
-                text-decoration: none;
-                font-size: 18px;
-                color: #ffffff;
-                display: inline-block;
-                border: none;
-                background: none;
-                text-align: center;
-                cursor: pointer;
-                outline: none;
-            }
+        .sidenav a,
+        .dropdown-btn {
+            padding: 2%;
+            width: 100%;
+            text-decoration: none;
+            font-size: 18px;
+            color: #ffffff;
+            display: inline-block;
+            border: none;
+            background: none;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+        }
 
         .dropdown-container {
             display: none;
             background-color: #0a0a0a;
         }
 
-        .sidenav a:hover, .dropdown-btn:hover {
+        .sidenav a:hover,
+        .dropdown-btn:hover {
             color: #e27464;
         }
 
@@ -95,6 +98,7 @@
             margin-top: 5%;
             margin-bottom: 5%;
         }
+
         #active {
             color: #feea03;
             font-size: 130%;
@@ -108,10 +112,14 @@
 <nav class="sidenav">
     <img src="images/bmsce_logo.png" />
     <hr style="height:2px;border-width:0;background-color:#66fcf1">
-    <a href="student_homepage.php">HOME</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-    <a href="profile.php">View Proile</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-    <a href="course.php" id="active">Courses</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
-    <a href="eligibility.php">View eligibility</a><hr style="height:2px;border-width:0;background-color:#66fcf1">
+    <a href="student_homepage.php">HOME</a>
+    <hr style="height:2px;border-width:0;background-color:#66fcf1">
+    <a href="profile.php">View Profile</a>
+    <hr style="height:2px;border-width:0;background-color:#66fcf1">
+    <a href="course.php" id="active">Courses</a>
+    <hr style="height:2px;border-width:0;background-color:#66fcf1">
+    <a href="eligibility.php">View eligibility</a>
+    <hr style="height:2px;border-width:0;background-color:#66fcf1">
     <button class="dropdown-btn">
         Exam
         <i class="fa fa-caret-down"></i>
@@ -119,18 +127,19 @@
     <div class="dropdown-container">
         <a href="timetable.php">Timetable</a>
         <a href="instruction.php">Instructions</a>
-        <a href="form.php">Registration</a>
+        <a href="exam.php">Registration</a>
     </div>
     <hr style="height:2px;border-width:0;background-color:#66fcf1">
 
 </nav>
+
 <body>
     <script>
         var dropdown = document.getElementsByClassName("dropdown-btn");
         var i;
 
         for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function () {
+            dropdown[i].addEventListener("click", function() {
                 this.classList.toggle("active");
                 var dropdownContent = this.nextElementSibling;
                 if (dropdownContent.style.display === "block") {
@@ -142,44 +151,43 @@
         }
     </script>
     <section class="right">
-    <?php
-    $tbl_name1="course";
-    $tbl_name2="course_enrolled";
-    $conn =mysqli_connect("$host", "$username", "$password")or die("cannot connect"); 
-    mysqli_select_db($conn,"$db_name")or die("cannot select DB");
-    
-    $sql = "SELECT c.course_id AS cid,c.name as name,c.credits as credits FROM $tbl_name2 ce,$tbl_name1 c,$tbl_name s 
+        <?php
+        $tbl_name1 = "course";
+        $tbl_name2 = "course_enrolled";
+        $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
+        mysqli_select_db($conn, "$db_name") or die("cannot select DB");
+
+        $sql = "SELECT c.course_id AS cid,c.name as name,c.credits as credits FROM $tbl_name2 ce,$tbl_name1 c,$tbl_name s 
     WHERE s.email='$usermail'and ce.sem=s.current_sem and s.usn=ce.usn and ce.course_id=c.course_id ";
-    $res=mysqli_query($conn,$sql);
-    $_SESSION["count1"] =mysqli_num_rows($res);
-    $j=0;
-    while ( $row=mysqli_fetch_assoc($res))
-   {
-       $i=0;
-    
-       $array[$j][$i++]=$row['cid'];
-       $array[$j][$i++]=$row['name'];
-       $array[$j][$i++]=$row['credits'];
-       $j++;
-   }
-    ?>
+        $res = mysqli_query($conn, $sql);
+        $_SESSION["count1"] = mysqli_num_rows($res);
+        $j = 0;
+        while ($row = mysqli_fetch_assoc($res)) {
+            $i = 0;
+
+            $array[$j][$i++] = $row['cid'];
+            $array[$j][$i++] = $row['name'];
+            $array[$j][$i++] = $row['credits'];
+            $j++;
+        }
+        ?>
         <h2>COURSES</h2>
-        <p>FOR SEMESTER : <?php echo " {$loggedin_sem}";?></p>
+        <p>FOR SEMESTER : <?php echo " {$loggedin_sem}"; ?></p>
         <table>
             <tr>
                 <th>COURSE CODE</th>
                 <th>COURSE TITLE</th>
                 <th>CREDITS</th>
             </tr>
-   <?php 
-     $count= $_SESSION["count1"];    
-    for($j=0;$j<$count;$j++){
-       echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td></tr>";
-          
-    }
-    ?>
-           
+            <?php
+            $count = $_SESSION["count1"];
+            for ($j = 0; $j < $count; $j++) {
+                echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td></tr>";
+            }
+            ?>
+
         </table>
     </section>
 </body>
+
 </html>
