@@ -4,7 +4,6 @@
 <head>
     <?php
     include('session.php');
-    //session_start();
     ?>
 
 
@@ -121,6 +120,33 @@
 </head>
 
 <body>
+    <?php
+    $tbl_name1 = "course";
+    $tbl_name2 = "course_enrolled";
+    $tbl_name3 = "exam";
+    $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
+    mysqli_select_db($conn, "$db_name") or die("cannot select DB");
+
+    $cur_date = date("Y-m-d");
+
+    $sql = "SELECT e.exam_id AS eid,e.name as ename, e.sem as esem, e.start_date as edate FROM $tbl_name3 e
+            WHERE e.start_date > $cur_date AND e.sem IN (SELECT c.sem from $tbl_name2 ce,$tbl_name1 c,$tbl_name s 
+            WHERE s.email='$usermail'and ce.sem=s.current_sem and s.usn=ce.usn and ce.course_id=c.course_id)";
+
+    $res = mysqli_query($conn, $sql);
+    $_SESSION["count1"] = mysqli_num_rows($res);
+    $j = 0;
+    while ($row = mysqli_fetch_assoc($res)) {
+        $i = 0;
+        $array[$j][$i++] = $row['eid'];
+        $array[$j][$i++] = $row['ename'];
+        $array[$j][$i++] = $row['esem'];
+        $time = strtotime($row['edate']);
+        $array[$j][$i++] = date("F", $time);
+        $array[$j][$i++] = date("Y", $time);
+        $j++;
+    }
+    ?>
 
     <section class="right">
         <form method="POST" action="form.php" name="form2">
@@ -129,79 +155,17 @@
                 <h1> Exam Registeration Form</h1>
             </center>
             <hr>
-            <div>
-                <label class=" field left">
-                    Exam Name :
-                </label>
+            <label class="field left">
+                Select Exam:
+            </label>
+            <?php
+            for ($i = 0; $i < $_SESSION["count1"]; $i++) {  ?>
+                <input type="radio" name="eid" value="<?php echo htmlspecialchars($array[$i][0]); ?>"><?php echo "<span> SEM:{$array[$i][2]} {$array[$i][1]} {$array[$i][3]}-{$array[$i][4]}</span> "; ?>
 
-                <select required name="name">
-                    <option value="Exam Name">Exam Name</option>
-                    <option value="SEMESTER END EXAMINATION">SEMESTER END EXAMINATION</option>
-                    <option value="IMPROVEMENT EXAMINATION">IMPROVEMENT EXAMINATION</option>
-                </select>
-            </div>
-            <div>
-                <label class="field left">
-                    Semester:
-                </label>
 
-                <select required name="sem">
-                    <option value="Semester">Semester</option>
-                    <option value="1"> I </option>
-                    <option value="2"> II</option>
-                    <option value="3"> III</option>
-                    <option value="4"> IV</option>
-                    <option value="5"> V</option>
-                    <option value="6"> VI</option>
-                    <option value="7"> VII</option>
-                    <option value="8"> VIII</option>
-                </select>
-            </div>
-            <br>
-            <div>
-                <label class="field left">
-                    Start_year:
-                </label>
-                <select id="ddlYears" name="year"></select>
-                <script type="text/javascript">
-                    window.onload = function() {
-                        //Reference the DropDownList.
-                        var ddlYears = document.getElementById("ddlYears");
+            <?php } ?>
 
-                        //Determine the Current Year.
-                        var currentYear = (new Date()).getFullYear();
-
-                        //Loop and add the Year values to DropDownList.
-                        for (var i = 2000; i <= currentYear; i++) {
-                            var option = document.createElement("OPTION");
-                            option.innerHTML = i;
-                            option.value = i;
-                            ddlYears.appendChild(option);
-                        }
-                    };
-                </script>
-                </select>
-            </div>
-            <div>
-                <label class="field left">
-                    Start_month:
-                </label>
-                <select required name="month">
-                    <option value="month">month</option>
-                    <option value="01">January</option>
-                    <option value="02">February</option>
-                    <option value="03">March</option>
-                    <option value="04">April</option>
-                    <option value="05">May</option>
-                    <option value="06">June</option>
-                    <option value="07">July</option>
-                    <option value="08">August</option>
-                    <option value="09">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-                <input type="submit" class="registerbtn" value="NEXT">
+            <input type="submit" class="registerbtn" value="NEXT">
 
         </form>
     </section>
