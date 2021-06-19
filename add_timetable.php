@@ -6,18 +6,16 @@
     include('session_admin.php');
     $_SESSION['ename'] = $_POST["name"];
     $_SESSION['esem'] = $_POST["sem"];
-    $_SESSION['eyear'] = $_POST["year"];
-    $_SESSION['emonth'] = $_POST["month"];
+    $_SESSION['edate'] = $_POST["start_date"];
     // To protect MySQL injection (more detail about MySQL injection)
     $_SESSION['ename'] = stripslashes($_SESSION['ename']);
     $_SESSION['esem'] = stripslashes($_SESSION['esem']);
-    $_SESSION['eyear'] = stripslashes($_SESSION['eyear']);
-    $_SESSION['emonth'] = stripslashes($_SESSION['emonth']);
+    $_SESSION['edate'] = stripslashes($_SESSION['edate']);
 
     $_SESSION['ename'] = mysqli_real_escape_string($conn, $_SESSION['ename']);
     $_SESSION['esem'] = mysqli_real_escape_string($conn, $_SESSION['esem']);
-    $_SESSION['eyear'] = mysqli_real_escape_string($conn, $_SESSION['eyear']);
-    $_SESSION['emonth'] = mysqli_real_escape_string($conn, $_SESSION['emonth']);
+    $_SESSION['edate'] = mysqli_real_escape_string($conn, $_SESSION['edate']);
+
     // echo "{$loggedin_name}";
     $esem = $_SESSION["esem"];
     // echo "{$er}";
@@ -195,7 +193,8 @@
                     </div>
                 <?php }
                 $_SESSION["data"] = $array;
-              //  print_r($_SESSION); ?>
+                //  print_r($_SESSION); 
+                ?>
             </div>
             <input type="submit" class="registerbtn" value="NEXT">
 

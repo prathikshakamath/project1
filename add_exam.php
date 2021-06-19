@@ -55,7 +55,7 @@
         }
 
         input[type=text],
-        input[type=password],
+        input[type=date],
         select {
             width: 50%;
             padding: 15px;
@@ -82,12 +82,17 @@
             font-weight: bold;
         }
 
+        input[type=date] {
+            width: 25%;
+        }
+
         .right hr {
             border: 1px solid #f1f1f1;
             margin-bottom: 25px;
         }
 
         .registerbtn {
+            display: block;
             background-color: #4CAF50;
             color: white;
             padding: 16px 20px;
@@ -126,7 +131,7 @@
         <form method="POST" action="add_timetable.php" name="form2">
 
             <center>
-                <h1> Exam Registeration Form</h1>
+                <h1> ADD EXAM:</h1>
             </center>
             <hr>
             <div>
@@ -160,47 +165,9 @@
             <br>
             <div>
                 <label class="field left">
-                    Start_year:
+                    Start Date:
                 </label>
-                <select id="ddlYears" name="year"></select>
-                <script type="text/javascript">
-                    window.onload = function() {
-                        //Reference the DropDownList.
-                        var ddlYears = document.getElementById("ddlYears");
-
-                        //Determine the Current Year.
-                        var currentYear = (new Date()).getFullYear();
-
-                        //Loop and add the Year values to DropDownList.
-                        for (var i = 2000; i <= currentYear; i++) {
-                            var option = document.createElement("OPTION");
-                            option.innerHTML = i;
-                            option.value = i;
-                            ddlYears.appendChild(option);
-                        }
-                    };
-                </script>
-                </select>
-            </div>
-            <div>
-                <label class="field left">
-                    Start_month:
-                </label>
-                <select required name="month">
-                    <option value="month">month</option>
-                    <option value="01">January</option>
-                    <option value="02">February</option>
-                    <option value="03">March</option>
-                    <option value="04">April</option>
-                    <option value="05">May</option>
-                    <option value="06">June</option>
-                    <option value="07">July</option>
-                    <option value="08">August</option>
-                    <option value="09">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
+                <input type="date" id="Date" name="start_date">
                 <input type="submit" class="registerbtn" value="NEXT">
 
         </form>

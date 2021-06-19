@@ -3,24 +3,22 @@
 include('session_admin.php');
 $ename = $_SESSION["ename"];
 $esem = $_SESSION["esem"];
-$eyear = $_SESSION["eyear"];
-$emonth = $_SESSION["emonth"];
+$edate = $_SESSION["edate"];
 
 $ename = stripslashes($ename);
 $esem = stripslashes($esem);
-$eyear = stripslashes($eyear);
-$emonth = stripslashes($emonth);
+$edate = stripslashes($edate);
+
 $ename = mysqli_real_escape_string($conn, $ename);
 $esem = mysqli_real_escape_string($conn, $esem);
-$eyear = mysqli_real_escape_string($conn, $eyear);
-$emonth = mysqli_real_escape_string($conn, $emonth);
+$edate = mysqli_real_escape_string($conn, $edate);
 
-$sql = "INSERT INTO exam(exam_id,name,start_year,start_month,sem,admin_id) VALUES (NULL,'$ename','$eyear','$emonth','$esem' ,'$loggedin_id')";
+$sql = "INSERT INTO exam(exam_id,name,sem,start_date,admin_id) VALUES (NULL,'$ename','$esem' ,'$edate','$loggedin_id')";
 $result = mysqli_query($conn, $sql);
 
 $tbl_name3 = "exam";
 $sql = "SELECT e.exam_id as id FROM $tbl_name3 e
-        WHERE e.name='$ename' and e.sem= '$esem' and e.start_year='$eyear' and e.start_month='$emonth' ";
+        WHERE e.name='$ename' and e.sem= '$esem' and e.start_date='$edate' ";
 $res = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($res);
 $id = $row['id'];
