@@ -6,98 +6,107 @@
     include('session.php');
     $eid = $_POST["eid"];
     $_SESSION["exam_id"] = $eid;
-    // echo "{$eid}";
+    $tbl_name1 = "exam_registration";
+    // echo "{$loggedin_usn}";
+    //echo "{$eid}";
+    $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
+    mysqli_select_db($conn, "$db_name") or die("cannot select DB");
+    $sql1 = "SELECT er.exam_id AS eid FROM $tbl_name1 er
+        WHERE er.exam_id ='$eid' and  er.usn='$loggedin_usn'";
+    $result = mysqli_query($conn, $sql1);
+    if ($result == NULL) {
+
     ?>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
-    <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
-    <title>Submit</title>
-    <style>
-     table,
-    th,
-    td {
-      border-collapse:collapse;  
-      border: 1px solid #000000;
-      width: 1000px;
-    }
-    th,td{
-        height:30px;
-    }
-        body {
-            background-color: lightblue;
-        }
-
-        .right {
-            float: right;
-            width: 90%;
-            background-color: lightblue;
-
-        }
-
-       
-
-        .logout {
-            position: fixed;
-            background-color: lightblue;
-            color: white;
-            border-color: #ff0000;
-            border: 3px solid red;
-            top: 1%;
-            left: 93%;
-            padding: 0.5%;
-        }
-
-        .submit {
-            color: white;
-            background-color: black;
-        }
-
-        .right hr {
-            border: 1px solid #f1f1f1;
-            margin-bottom: 25px;
-        }
-
-        .registerbtn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 16px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 73%;
-            opacity: 0.9;
-        }
-
-        .registerbtn:hover {
-            opacity: 1;
-        }
-
-        label,
-        input {
-
-            padding: 2%;
-            margin-top: 2%;
-
-        }
-
-        input {
-            margin-left: 3%;
-        }
-
-
-       
-    </style>
-    <script>
-        function check() {
-
-            if (myform.subject[1].checked == true || myform.subject[2].checked == true) {
-                document.getElementById('text').style.display = "block";
-                return false;
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
+        <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
+        <title>Submit</title>
+        <style>
+            table,
+            th,
+            td {
+                border-collapse: collapse;
+                border: 1px solid #000000;
+                width: 1000px;
             }
 
-        }
-    </script>
+            th,
+            td {
+                height: 30px;
+            }
+
+            body {
+                background-color: lightblue;
+            }
+
+            .right {
+                float: right;
+                width: 90%;
+                background-color: lightblue;
+
+            }
+
+
+
+            .logout {
+                position: fixed;
+                background-color: lightblue;
+                color: white;
+                border-color: #ff0000;
+                border: 3px solid red;
+                top: 1%;
+                left: 93%;
+                padding: 0.5%;
+            }
+
+            .submit {
+                color: white;
+                background-color: black;
+            }
+
+            .right hr {
+                border: 1px solid #f1f1f1;
+                margin-bottom: 25px;
+            }
+
+            .registerbtn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 73%;
+                opacity: 0.9;
+            }
+
+            .registerbtn:hover {
+                opacity: 1;
+            }
+
+            label,
+            input {
+
+                padding: 2%;
+                margin-top: 2%;
+
+            }
+
+            input {
+                margin-left: 3%;
+            }
+        </style>
+        <script>
+            function check() {
+
+                if (myform.subject[1].checked == true || myform.subject[2].checked == true) {
+                    document.getElementById('text').style.display = "block";
+                    return false;
+                }
+
+            }
+        </script>
 </head>
 
 <body>
@@ -167,3 +176,8 @@
 </body>
 
 </html>
+<?php
+    } else {
+        header("location:registration_done.php");
+    }
+?>
