@@ -127,6 +127,7 @@
     $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
     mysqli_select_db($conn, "$db_name") or die("cannot select DB");
 
+    date_default_timezone_set("Asia/Calcutta");
     $cur_date = date("Y-m-d");
 
     $sql = "SELECT e.exam_id AS eid,e.name as ename, e.sem as esem, e.start_date as edate FROM $tbl_name3 e
@@ -158,10 +159,11 @@
             <label class="field left">
                 Select Exam:
             </label>
+            <br>
             <?php
             for ($i = 0; $i < $_SESSION["count1"]; $i++) {  ?>
                 <input type="radio" name="eid" value="<?php echo htmlspecialchars($array[$i][0]); ?>"><?php echo "<span> SEM:{$array[$i][2]} {$array[$i][1]} {$array[$i][3]}-{$array[$i][4]}</span> "; ?>
-
+                <br>
 
             <?php } ?>
 

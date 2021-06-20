@@ -5,6 +5,7 @@
     <?php
     include('session.php');
     $eid = $_POST["eid"];
+    $_SESSION["exam_id"] = $eid;
     // echo "{$eid}";
     ?>
 
@@ -184,7 +185,7 @@
         }
         ?>
 
-        <form onsubmit="return check()" name="myform" action="thankyou.php">
+        <form name="myform" action="hall_ticket.php">
             <center>
                 <h1> Exam Registeration Form</h1>
             </center>
