@@ -14,13 +14,19 @@
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
     <title>Submit</title>
     <style>
+     table,
+    th,
+    td {
+      border: 1px solid #000000;
+      width: 1000px;
+    }
         body {
             background-color: lightblue;
         }
 
         .right {
             float: right;
-            width: 77%;
+            width: 90%;
             background-color: lightblue;
 
         }
@@ -88,7 +94,7 @@
             margin: 8px 0;
             border: none;
             cursor: pointer;
-            width: 100%;
+            width: 73%;
             opacity: 0.9;
         }
 
@@ -194,15 +200,13 @@
                 <tr>
                     <th>COURSE CODE</th>
                     <th>COURSE TITLE</th>
-                    <th>ATTENDANCE</th>
-                    <th>CIE MARKS</th>
                     <th>ELIGIBILITY</th>
                 </tr>
 
                 <?php
                 $count = $_SESSION["count1"];
                 for ($j = 0; $j < $count; $j++) {
-                    echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td><td>{$array[$j][3]}</td><td>{$array[$j][4]}</td></tr>";
+                    echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][4]}</td></tr>";
                 }
                 ?>
 

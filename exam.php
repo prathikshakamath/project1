@@ -18,72 +18,19 @@
 
         .right {
             float: right;
-            width: 100%;
+            width: 90%;
             background-color: lightblue;
-        }
-
-        form {
-            width: 100%;
-        }
-
-        .logout {
-            position: fixed;
-            background-color: black;
-            color: white;
-            border-color: #ff0000;
-            border: 3px solid red;
-            top: 1%;
-            left: 93%;
-            padding: 0.5%;
-        }
-
-        .submit {
-            color: white;
-            background-color: black;
-        }
-
-        button a {
-            text-decoration: none;
-            color: white;
-        }
-
-
-        .container {
-            padding-left: 5%;
-            background-color: lightblue;
-        }
-
-        input[type=text],
-        input[type=password],
-        select {
-            width: 50%;
-            padding: 15px;
-            margin: 5px 0 22px 0;
-            display: inline-block;
-            border: none;
-            background: #f1f1f1;
-        }
-
-        input[type=text]:focus,
-        input[type=password]:focus {
-            background-color: #f7ef86;
-            outline: none;
-        }
-
-        .shift {
-            margin-left: 1%;
         }
 
         .shift>label,
         .left {
             display: inline-block;
-            width: 10%;
             font-weight: bold;
         }
 
         .right hr {
             border: 1px solid #f1f1f1;
-            margin-bottom: 25px;
+            margin-bottom: 25px ;
         }
 
         .registerbtn {
@@ -93,28 +40,14 @@
             margin-left: 45%;
             border: none;
             cursor: pointer;
-            width: 15%;
+            width: 20%;
             opacity: 0.9;
         }
 
         .registerbtn:hover {
-            opacity: 1;
+            opacity: 2;
         }
 
-        label .field {
-            display: inline-block;
-        }
-
-        div .name {
-            display: inline-block;
-            width: 28%;
-            padding: 1%;
-            font-weight: bold;
-        }
-
-        div .name>input {
-            width: 80%;
-        }
     </style>
 
 </head>
@@ -157,7 +90,7 @@
             </center>
             <hr>
             <label class="field left">
-                Select Exam:
+                SELECT EXAM:
             </label>
             <br>
             <?php
