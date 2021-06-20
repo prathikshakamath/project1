@@ -1,8 +1,9 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<?php
+    <?php
     include('session.php');
     ?>
 
@@ -160,43 +161,79 @@
         }
     </script>
     <section class="right">
-    <?php
-        $tbl_name3 = "timetable";
-        $tbl_name4 ="exam";
-        $tbl_name1 ="course";
-        $tbl_name2 ="course_enrolled";
+        <h2>TIME TABLE</h2>
+        <?php
+        $tbl_name1 = "exam";
+        $tbl_name2 = "exam_registration";
         $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
         mysqli_select_db($conn, "$db_name") or die("cannot select DB");
+        date_default_timezone_set("Asia/Calcutta");
+        $cur_date = date("Y-m-d");
+        // SELECT e.exam_id AS eid,e.name as ename, e.sem as esem, e.start_date as edate FROM $tbl_name1 e,$tbl_name2 er,$tbl_name s
+        //WHERE s.email='$loggedin_email'and s.usn = er.usn  and er.exam_id = e.exam_id and e.start_date > '$cur_date'
 
-        $sql = "SELECT distinct t.course_id AS cid,c.name as name,t.exam_date as date  FROM $tbl_name3 t,$tbl_name4 e,$tbl_name1 c ,$tbl_name s,$tbl_name2 ce
-    WHERE s.email='$usermail'and ce.sem=s.current_sem and s.usn=ce.usn and t.course_id=c.course_id and e.exam_id=t.exam_id ";
-        $res = mysqli_query($conn, $sql);
-        $_SESSION["count1"] = mysqli_num_rows($res);
-        $j = 0;
-        while ($row = mysqli_fetch_assoc($res)) {
-            $i = 0;
-
-            $array[$j][$i++] = $row['cid'];
-            $array[$j][$i++] = $row['name'];
-            $array[$j][$i++] = $row['date'];
-            $j++;
-        }
-        ?>
-        <h2>TIME TABLE</h2>
-        <p>FOR SEMESTER : <?php echo " {$loggedin_sem}"; ?></p>
-        <table>
-            <tr>
-                <th>COURSE CODE</th>
-                <th>COURSE TITLE</th>
-                <th>DATE</th>
-            </tr>
-            <?php
-            $count = $_SESSION["count1"];
-            for ($j = 0; $j < $count; $j++) {
-                echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td></tr>";
+        $sql1 = "SELECT er.exam_id AS eid,e.name as ename, e.sem as esem, e.start_date as edate FROM $tbl_name1 e,$tbl_name2 er,$tbl_name s
+        WHERE s.usn='$loggedin_usn'and s.usn = er.usn  and er.exam_id = e.exam_id and e.start_date > '$cur_date'";
+        $result = mysqli_query($conn, $sql1);
+        if ($result == NULL) {
+            echo ("NO TIMETABLE FOUND");
+            $c = 0;
+        } else {
+            $c = mysqli_num_rows($result);
+            $j = 0;
+            while ($row = mysqli_fetch_assoc($result)) {
+                $i = 0;
+                $exam[$j][$i++] = $row['eid'];
+                $exam[$j][$i++] = $row['ename'];
+                $exam[$j][$i++] = $row['esem'];
+                $time = strtotime($row['edate']);
+                $exam[$j][$i++] = date("F", $time);
+                $exam[$j][$i++] = date("Y", $time);
+                $j++;
             }
-            ?> 
-        </table>
+        }
+        if ($c != 0) {
+            for ($k = 0; $k < $c; $k++) {
+                $tbl_name3 = "timetable";
+                $tbl_name4 = "exam";
+                $tbl_name1 = "course";
+                $tbl_name2 = "course_enrolled";
+                $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
+                mysqli_select_db($conn, "$db_name") or die("cannot select DB");
+                $eid = $exam[$k][0];
+                $sql = "SELECT distinct ce.course_id AS cid,c.name as name,t.exam_date as date,t.start_time as time  FROM $tbl_name3 t,$tbl_name4 e,$tbl_name1 c ,$tbl_name s,$tbl_name2 ce
+            WHERE s.email='$usermail'and ce.sem=s.current_sem and s.usn=ce.usn and t.course_id=ce.course_id and t.exam_id='$eid' and c.course_id = ce.course_id";
+                $res = mysqli_query($conn, $sql);
+                $_SESSION["count1"] = mysqli_num_rows($res);
+                $j = 0;
+                while ($row = mysqli_fetch_assoc($res)) {
+                    $i = 0;
+
+                    $array[$j][$i++] = $row['cid'];
+                    $array[$j][$i++] = $row['name'];
+                    $array[$j][$i++] = $row['date'];
+                    $array[$j][$i++] = $row['time'];
+                    $j++;
+                }
+        ?>
+
+                <table>
+                    <p> <?php echo "<span> SEM:{$exam[$k][2]} {$exam[$k][1]} {$exam[$k][3]}-{$exam[$k][4]}</span> "; ?></p>
+                    <tr>
+                        <th>COURSE CODE</th>
+                        <th>COURSE TITLE</th>
+                        <th>DATE</th>
+                        <th>TIME</th>
+                    </tr>
+            <?php
+                $count = $_SESSION["count1"];
+                for ($j = 0; $j < $count; $j++) {
+                    echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td><td>{$array[$j][3]}</td></tr>";
+                }
+            }
+        }
+            ?>
+                </table>
     </section>
 </body>
 
