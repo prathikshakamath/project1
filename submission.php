@@ -2,33 +2,29 @@
 <html lang="en">
 
 <head>
+    <?php
+    include('session_admin.php');
+    ?>
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
-    <link rel="stylesheet" href="table.css">
     <title>Student Homepage</title>
     <style>
-        .table {
-            margin: 5% auto;
-            width: 70%;
+        body {
+            background-color: lightblue;
         }
 
-        table tr th {
-            border: solid rgb(6, 24, 107);
-            border-width: 1px 1px 3px 1px;
-            width: 250px;
-            margin: 20px;
-            line-height: 100%;
-            color: #ffffff;
-            font-size: 100%;
-            font-weight: bold;
-            font-family: Arial, Helvetica, sans-serif;
-            text-align: center;
-            background: linear-gradient(to right, #000000, #130e0e);
-            padding: 2%;
+        .right {
+            float: right;
+            width: 100%;
+            background-color: lightblue;
         }
 
+        form {
+            width: 100%;
+        }
 
         .logout {
             position: fixed;
@@ -41,114 +37,137 @@
             padding: 0.5%;
         }
 
+        .submit {
+            color: white;
+            background-color: black;
+        }
+
         button a {
             text-decoration: none;
             color: white;
         }
 
-        p {
-            font-family: 'Alegreya';
-            color: orangered;
+
+        .container {
+            padding-left: 5%;
+            background-color: lightblue;
         }
 
-        .not {
-            color: red;
+        input[type=text],
+        input[type=password],
+        select {
+            width: 50%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: #f7ef86;
+            outline: none;
+        }
+
+        .shift {
+            margin-left: 1%;
+        }
+
+        .shift>label,
+        .left {
+            display: inline-block;
+            width: 10%;
+            font-weight: bold;
+        }
+
+        .right hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        .registerbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            margin-left: 45%;
+            border: none;
+            cursor: pointer;
+            width: 15%;
+            opacity: 0.9;
+        }
+
+        .registerbtn:hover {
             opacity: 1;
         }
 
-        .back {
-            font-size: 1.25rem;
-            margin-left: 80%;
-            font-size: 1.5rem;
-            line-height: 1.4;
-            margin-top: -3.5%;
+        label .field {
+            display: inline-block;
         }
 
-        a:hover {
-            color: #4cf352;
+        div .name {
+            display: inline-block;
+            width: 28%;
+            padding: 1%;
+            font-weight: bold;
         }
 
-        p a {
-            color: navy;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 220%;
-            color: black;
+        div .name>input {
+            width: 80%;
         }
     </style>
 
 </head>
 
 <body>
-    <button class="logout"><a href="admin_login.php">LOGOUT</a></button>
+    <?php
+    $tbl_name3 = "exam";
+    $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
+    mysqli_select_db($conn, "$db_name") or die("cannot select DB");
 
+    date_default_timezone_set("Asia/Calcutta");
+    $cur_date = date("Y-m-d");
 
+    $sql = "SELECT e.exam_id AS eid,e.name as ename, e.sem as esem, e.start_date as edate FROM $tbl_name3 e
+            WHERE e.start_date > $cur_date order by e.start_date";
 
-    <section class="table">
-        <h2>EXAM REGISTRATION STATUS</h2>
-        <p>(TO CHECK IF STUDENT REGISTERED FOR EXAM OR NOT)</p>
-        <table>
-            <tr>
-                <th>USN</th>
-                <th>STUDENT NAME</th>
-                <th>ATTENDANCE</th>
-                <th>STATUS</th>
+    $res = mysqli_query($conn, $sql);
+    $_SESSION['count1'] = mysqli_num_rows($res);
+    $j = 0;
+    while ($row = mysqli_fetch_assoc($res)) {
+        $i = 0;
+        $array[$j][$i++] = $row['eid'];
+        $array[$j][$i++] = $row['ename'];
+        $array[$j][$i++] = $row['esem'];
+        $time = strtotime($row['edate']);
+        $array[$j][$i++] = date("F", $time);
+        $array[$j][$i++] = date("Y", $time);
+        $j++;
+    }
+    ?>
 
-            </tr>
-            <tr>
-                <td>1BM19CS119</td>
-                <td>PRATIBHA JAMKHANDI</td>
-                <td>85%</td>
-                <td>REGISTERED</td>
+    <section class="right">
+        <form method="POST" action="student_list.php" name="form2">
 
-            </tr>
-            <tr>
-                <td>1BM19CS118</td>
-                <td>PRATHIKSHA KAMATH</td>
-                <td>87%</td>
-                <td>REGISTERED</td>
+            <center>
+                <h1> Check exam registration status</h1>
+            </center>
+            <hr>
+            <label class="field left">
+                Select Exam:
+            </label>
+            <br>
+            <?php
+            for ($i = 0; $i < $_SESSION["count1"]; $i++) {  ?>
+                <input type="radio" name="eid" value="<?php echo htmlspecialchars($array[$i][0]); ?>"><?php echo "<span> {$array[$i][1]} (SEM: {$array[$i][2]}) {$array[$i][3]}-{$array[$i][4]}</span> "; ?>
+                <br>
 
-            </tr>
-            <tr class="not">
-                <td>1BM19CS124</td>
-                <td>RANJI K</td>
-                <td>86%</td>
-                <td>PENDING</td>
+            <?php } ?>
 
-            </tr>
-            <tr>
-                <td>1BM19ET014</td>
-                <td>DEEPTHI L</td>
-                <td>92%</td>
-                <td>REGISTERED</td>
+            <input type="submit" class="registerbtn" value="NEXT">
 
-            </tr>
-            <tr class="not">
-                <td>1BM19CS145</td>
-                <td>PALLAVI J</td>
-                <td>79%</td>
-                <td>PENDING</td>
-
-            </tr>
-            <tr class="not">
-                <td>1BM19CS122</td>
-                <td>PRITHVI J</td>
-                <td>94%</td>
-                <td>PENDING</td>
-
-            </tr>
-            <tr>
-                <td>1BM19CS078</td>
-                <td>BHAVYA SHARMA</td>
-                <td>88%</td>
-                <td>REGISTERED</td>
-
-            </tr>
-        </table>
+        </form>
     </section>
-    <p class="back"><a href="admin_homepage.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to homepage</a></p>
 </body>
 
 </html>
