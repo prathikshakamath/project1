@@ -24,6 +24,7 @@ $sql = "SELECT e.usn AS usn,s.name as name,s.current_sem as sem FROM $tbl_name1 
 
 $res = mysqli_query($conn, $sql);
 $count1 = mysqli_num_rows($res);
+echo "{$count1}";
 $j = 0;
 while ($row = mysqli_fetch_assoc($res)) {
     $i = 0;
@@ -132,7 +133,7 @@ while ($row = mysqli_fetch_assoc($res)) {
                 <th>SEM</th>
             </tr>
             <?php
-            for ($j = 0; $j < $count; $j++) {
+            for ($j = 0; $j < $count1; $j++) {
                 echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td></tr>";
             }
             ?>
