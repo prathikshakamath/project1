@@ -17,8 +17,12 @@
      table,
     th,
     td {
+      border-collapse:collapse;  
       border: 1px solid #000000;
       width: 1000px;
+    }
+    th,td{
+        height:30px;
     }
         body {
             background-color: lightblue;
@@ -31,13 +35,11 @@
 
         }
 
-        form {
-            width: 100%;
-        }
+       
 
         .logout {
             position: fixed;
-            background-color: black;
+            background-color: lightblue;
             color: white;
             border-color: #ff0000;
             border: 3px solid red;
@@ -50,37 +52,6 @@
             color: white;
             background-color: black;
         }
-
-        button a {
-            text-decoration: none;
-            color: white;
-        }
-
-
-        .container {
-            padding-left: 6%;
-            padding-top: 1%;
-            background-color: lightblue;
-
-        }
-
-        input[type=text],
-        input[type=password] {
-            width: 95%;
-            padding: 15px;
-            margin: 5px 0 22px 0;
-            display: inline-block;
-            border: none;
-            background: #f1f1f1;
-        }
-
-        input[type=text]:focus,
-        input[type=password]:focus {
-            background-color: orange;
-            outline: none;
-        }
-
-
 
         .right hr {
             border: 1px solid #f1f1f1;
@@ -102,17 +73,11 @@
             opacity: 1;
         }
 
-        div .name {
-            display: inline-block;
-            width: 30%;
-            padding: 1%;
-        }
-
         label,
         input {
 
             padding: 2%;
-            margin-top: 1.5%;
+            margin-top: 2%;
 
         }
 
@@ -120,31 +85,8 @@
             margin-left: 3%;
         }
 
-        #text {
-            margin: 1%;
-            color: red;
-            display: none;
-        }
 
-        .not {
-            color: red;
-        }
-
-        input[type="checkbox"]:checked {
-            box-shadow: 0 0 0 3px #4CAF50;
-        }
-
-        #active {
-            color: #feea03;
-            font-size: 130%;
-            line-height: 120%;
-            font-weight: 200;
-        }
-
-        #active1 {
-            color: #feea03;
-            font-weight: 200;
-        }
+       
     </style>
     <script>
         function check() {
