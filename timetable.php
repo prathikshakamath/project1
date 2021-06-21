@@ -175,11 +175,11 @@
         $sql1 = "SELECT er.exam_id AS eid,e.name as ename, e.sem as esem, e.start_date as edate FROM $tbl_name1 e,$tbl_name2 er,$tbl_name s
         WHERE s.usn='$loggedin_usn'and s.usn = er.usn  and er.exam_id = e.exam_id and e.start_date > '$cur_date'";
         $result = mysqli_query($conn, $sql1);
-        if ($result == NULL) {
+        $c = mysqli_num_rows($result);
+        if ($c == 0) {
             echo ("NO TIMETABLE FOUND");
-            $c = 0;
         } else {
-            $c = mysqli_num_rows($result);
+
             $j = 0;
             while ($row = mysqli_fetch_assoc($result)) {
                 $i = 0;
