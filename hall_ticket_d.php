@@ -163,7 +163,8 @@
                 mysqli_select_db($conn, "$db_name") or die("cannot select DB");
 
                 $sql = "SELECT distinct ce.course_id AS cid,c.name as name,t.exam_date as date,t.start_time as time  FROM $tbl_name3 t,$tbl_name4 e,$tbl_name1 c ,$tbl_name s,$tbl_name2 ce
-                        WHERE s.email='$usermail'and ce.sem=s.current_sem and s.usn=ce.usn and t.course_id=ce.course_id and t.exam_id='$eid' and c.course_id = ce.course_id";
+                        WHERE s.email='$usermail'and ce.sem=s.current_sem and s.usn=ce.usn and t.course_id=ce.course_id and t.exam_id='$eid' 
+                        and c.course_id = ce.course_id and ce.attendance>= 85 and ce.cie_marks >= 20";
                 $res = mysqli_query($conn, $sql);
                 $_SESSION["count1"] = mysqli_num_rows($res);
                 $j = 0;
