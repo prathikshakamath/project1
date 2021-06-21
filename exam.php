@@ -79,7 +79,7 @@
             $_SESSION["count1"] = mysqli_num_rows($res);
             if ($_SESSION["count1"] == 0) {
                 echo "NO EXAM FOUND<br>";
-                echo '<a href="student_login.php">Back to homepage</a>';
+                echo '<a href="student_homepage.php">Back to homepage</a>';
             } else {
                 $j = 0;
                 while ($row = mysqli_fetch_assoc($res)) {
