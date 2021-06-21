@@ -71,6 +71,12 @@
     .table thead th {
       border: 1px solid #000000 !important;
     }
+
+    .title {
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+    }
   </style>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -92,16 +98,21 @@
       <div class="admit-card">
         <div class="BoxA border- padding mar-bot">
           <div class="row">
-            <div class="col-sm-4 txt-center">
-              <img src="images/bmsce_logo.png" width="100px;" />
-            </div>
-            <div class="col-sm-4">
-              <h5>BMS COLLEGE OF ENGINEERING</h5>
-            </div>
-            <br>
-            <div class="col-sm-4">
-              <h5>Admit Card</h5>
-              <p><?php echo "  {$ename} (SEM: {$esem}) {$emonth}-{$eyear} "; ?></p>
+            <div class="title">
+
+
+              <div>
+                <h5>BMS COLLEGE OF ENGINEERING</h5>
+                <div class="image">
+                  <img src="images/bmsce_logo.png" width="100px;" />
+                </div>
+              </div>
+              <div>
+                <h5>
+                  Admit Card
+                </h5>
+                <p><?php echo "  {$ename} (SEM: {$esem}) {$emonth}-{$eyear} "; ?></p>
+              </div>
             </div>
           </div>
         </div>
