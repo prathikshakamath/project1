@@ -14,7 +14,10 @@
     $sql1 = "SELECT er.exam_id AS eid FROM $tbl_name1 er
         WHERE er.exam_id ='$eid' and  er.usn='$loggedin_usn'";
     $result = mysqli_query($conn, $sql1);
-    if ($result == NULL) {
+    $count1 = mysqli_num_rows($result);
+    if ($count1 == 1) {
+        header("location:registration_done.php");
+    } else {
 
     ?>
 
@@ -177,7 +180,5 @@
 
 </html>
 <?php
-    } else {
-        header("location:registration_done.php");
     }
 ?>

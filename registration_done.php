@@ -102,7 +102,8 @@ include('session.php');
     <div class="main-content">
         <i class="fa fa-check main-content__checkmark" id="checkmark"></i>
         <p class="main-content__body" data-lead-id="main-content-body"> YOU HAVE REGISTERED FOR YOUR EXAM!</p>
-        <p class="main-content__body" data-lead-id="main-content-body"><a href="hall_ticket_d.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Download Admit Card</a></p>
+        <p class="main-content__body" data-lead-id="main-content-body"><a href="hall_ticket_d.php" target="_blank" style="text-decoration:none;"><i class="fas fa-arrow-down"></i></i> Download Admit Card</a></p>
+        <p class="main-content__body" data-lead-id="main-content-body"><a href="student_homepage.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to Homepage</a> </p>
     </div>
 
 
