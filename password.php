@@ -49,6 +49,27 @@ font-size:11px;
 font-weight:italic;
 padding-left:10px;
 }
+.main-content {
+margin: 0 auto;
+max-width: 820px;
+}
+.main-content__checkmark {
+font-size: 4.0625rem;
+line-height: 1;
+color: #24b663;
+}
+.main-content__body {
+margin: 20px 0 0;
+font-size: 1rem;
+line-height: 1.4;
+}
+.main-content__checkmark {
+font-size: 9.75rem;
+}           
+.main-content__body {               
+font-size: 1.25rem;
+}
+        
 </style>
 <script>
 function validatePassword() {
@@ -125,6 +146,10 @@ if (count($_POST) > 0) {
 </table>
 </div>
 </form>
+<div class="main-content">
+        <i class="fa fa-check main-content__checkmark" id="checkmark"></i>
+        <p class="main-content__body" data-lead-id="main-content-body"><a href="student_homepage.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to Homepage</a> </p>
+    </div>
 
 </body>
 </html>
