@@ -214,6 +214,9 @@
                 <span class="detail"><?php print "{$loggedin_phone}" ?></span><br />
 
             </div>
+            <div class="main-content">
+            <p class="main-content__body" data-lead-id="main-content-body"><a href="password.php" style="text-decoration:none;"> Change Password</a> </p>
+        </div>
         </section>
     </section>
 
