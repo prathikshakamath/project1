@@ -53,22 +53,11 @@
             background-color: lightblue;
         }
 
-        input[type=text],
-        input[type=password],
-        select {
-            width: 50%;
-            padding: 15px;
-            margin: 5px 0 22px 0;
-            display: inline-block;
-            border: none;
-            background: #f1f1f1;
+        input[type=radio] {
+            margin: 5px 2px 22px 5px;
         }
 
-        input[type=text]:focus,
-        input[type=password]:focus {
-            background-color: #f7ef86;
-            outline: none;
-        }
+
 
         .shift {
             margin-left: 1%;
@@ -79,6 +68,7 @@
             display: inline-block;
             width: 10%;
             font-weight: bold;
+            font-size: larger;
         }
 
         .right hr {
@@ -114,6 +104,14 @@
 
         div .name>input {
             width: 80%;
+        }
+
+        .link {
+            margin-left: 20%;
+        }
+
+        .link a:hover {
+            color: #EE4B2B;
         }
     </style>
 
@@ -158,13 +156,20 @@
             </label>
             <br>
             <?php
-            for ($i = 0; $i < $_SESSION["count1"]; $i++) {  ?>
-                <input type="radio" name="eid" value="<?php echo htmlspecialchars($array[$i][0]); ?>"><?php echo "<span> {$array[$i][1]} (SEM: {$array[$i][2]}) {$array[$i][3]}-{$array[$i][4]}</span> "; ?>
-                <br>
+            if ($_SESSION["count1"] == 0) {
+                echo '<span style="font-size:120%";>NO EXAM FOUND<br>';
+                echo '<p class="link"><a href="admin_homepage.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to homepage</a></p>';
+            } else {
+                for ($i = 0; $i < $_SESSION["count1"]; $i++) {  ?>
+                    <input type="radio" name="eid" value="<?php echo htmlspecialchars($array[$i][0]); ?>"><?php echo "<span> {$array[$i][1]} (SEM: {$array[$i][2]}) {$array[$i][3]}-{$array[$i][4]}</span> "; ?>
+                    <br>
 
-            <?php } ?>
+                <?php }
+                ?>
 
-            <input type="submit" class="registerbtn" value="NEXT">
+                <input type="submit" class="registerbtn" value="NEXT">
+            <?php
+            } ?>
 
         </form>
     </section>

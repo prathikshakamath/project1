@@ -140,7 +140,7 @@
                 </label>
 
                 <select required name="name">
-                    <option value="Exam Name">Exam Name</option>
+                    <option value="">Exam Name</option>
                     <option value="SEMESTER END EXAMINATION">SEMESTER END EXAMINATION</option>
                     <option value="IMPROVEMENT EXAMINATION">IMPROVEMENT EXAMINATION</option>
                 </select>
@@ -150,8 +150,8 @@
                     Semester:
                 </label>
 
-                <select required name="sem">
-                    <option value="Semester">Semester</option>
+                <select name="sem" required>
+                    <option value="">Semester</option>
                     <option value="1"> I </option>
                     <option value="2"> II</option>
                     <option value="3"> III</option>
@@ -167,7 +167,7 @@
                 <label class="field left">
                     Start Date:
                 </label>
-                <input type="date" id="Date" name="start_date">
+                <input type="date" id="Date" name="start_date" required>
                 <input type="submit" class="registerbtn" value="NEXT">
 
         </form>

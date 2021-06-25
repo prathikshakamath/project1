@@ -47,6 +47,7 @@
             background-color: #cae9f5;
             border-collapse: collapse;
             display: inline-block;
+
         }
 
         .column {
@@ -60,12 +61,11 @@
             list-style-type: none;
             padding: 2%;
             line-height: 170%;
+            text-align: left;
+            padding-left: 10%;
         }
 
-        .list li::before {
-            content: "\f0a4";
-            font-family: "Font Awesome 5 Free";
-        }
+
 
         .list a {
             text-decoration: none;
@@ -131,18 +131,18 @@
         }
 
         input[type=text] {
-            width: 80%;
-            height: 10%;
-            padding: 15px;
-            margin: 30% 0 5% 0;
             display: inline-block;
+            width: 80%;
+            height: 120%;
+            padding: 5%;
+            margin: 30% 0 5% 0;
             border: 1px solid black;
             background: #f1f1f1;
 
         }
 
         input[type=text]:focus {
-            background-color: #baf7b6;
+            background-color: #a2b9bc;
             outline: none;
         }
 
@@ -192,7 +192,7 @@
                 }
                 for ($j = 0; $j < $count; $j++) {
                 ?>
-                    <li><?php echo "{$array[$j]}"; ?></li>
+                    <li><i class="fas fa-thumbtack"></i><?php echo " {$array[$j]}"; ?></li>
                 <?php } ?>
             </ul>
             <form method="POST" action="announcement.php" name="form3">

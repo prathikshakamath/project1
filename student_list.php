@@ -24,7 +24,7 @@ $sql = "SELECT e.usn AS usn,s.name as name,s.current_sem as sem FROM $tbl_name1 
 
 $res = mysqli_query($conn, $sql);
 $count1 = mysqli_num_rows($res);
-echo "{$count1}";
+//echo "{$count1}";
 $j = 0;
 while ($row = mysqli_fetch_assoc($res)) {
     $i = 0;
@@ -126,18 +126,24 @@ while ($row = mysqli_fetch_assoc($res)) {
     <section class="table">
         <h2>EXAM REGISTRATION STATUS</h2>
         <p>(LIST OF STUDENTS REGISTERED FOR<?php echo "  {$ename} (SEM: {$esem}) {$emonth}-{$eyear} "; ?>)</p>
-        <table>
-            <tr>
-                <th>USN</th>
-                <th>STUDENT NAME</th>
-                <th>SEM</th>
-            </tr>
+        <?php
+        if ($count1 == 0) {
+            echo '<span style="font-size:120%";>NO STUDENT FOUND';
+        } else {
+        ?>
+            <table>
+                <tr>
+                    <th>USN</th>
+                    <th>STUDENT NAME</th>
+                    <th>SEM</th>
+                </tr>
             <?php
             for ($j = 0; $j < $count1; $j++) {
                 echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td></tr>";
             }
+        }
             ?>
-        </table>
+            </table>
     </section>
     <p class="back"><a href="admin_homepage.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to homepage</a></p>
 </body>
