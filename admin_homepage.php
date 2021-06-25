@@ -196,7 +196,7 @@
                 <?php } ?>
             </ul>
             <form method="POST" action="announcement.php" name="form3">
-                <input type='text' id='idea' name="msg"><br />
+                <input type='text' id='idea' name="msg" autocomplete="off"><br />
                 <input type="submit" value="ADD NEW" value="submit">
             </form>
 

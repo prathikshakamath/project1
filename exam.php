@@ -18,13 +18,19 @@
 
         .right {
             float: right;
-            width: 90%;
+            width: 100%;
             background-color: lightblue;
         }
+
+        input[type=radio] {
+            margin: 5px 2px 22px 5px;
+        }
+
 
         .shift>label,
         .left {
             display: inline-block;
+            font-size: large;
             font-weight: bold;
         }
 
@@ -46,6 +52,14 @@
 
         .registerbtn:hover {
             opacity: 2;
+        }
+
+        .link {
+            margin-left: 20%;
+        }
+
+        .link a:hover {
+            color: #EE4B2B;
         }
     </style>
 
@@ -78,8 +92,9 @@
             $res = mysqli_query($conn, $sql);
             $_SESSION["count1"] = mysqli_num_rows($res);
             if ($_SESSION["count1"] == 0) {
-                echo "NO EXAM FOUND<br>";
-                echo '<a href="student_homepage.php">Back to homepage</a>';
+
+                echo '<span style="font-size:120%";>NO EXAM FOUND<br>';
+                echo '<p class="link"><a href="student_homepage.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to homepage</a></p>';
             } else {
                 $j = 0;
                 while ($row = mysqli_fetch_assoc($res)) {

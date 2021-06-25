@@ -175,7 +175,7 @@
             }
             for ($j = 0; $j < $count; $j++) {
             ?>
-                <li><?php echo "{$array[$j]}"; ?></li>
+                <li><?php echo " {$array[$j]}"; ?></li>
             <?php } ?>
 
         </ul>

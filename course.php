@@ -174,21 +174,27 @@
         ?>
         <h2>COURSES</h2>
         <p>FOR SEMESTER : <?php echo " {$loggedin_sem}"; ?></p>
-        <table>
-            <tr>
-                <th>COURSE CODE</th>
-                <th>COURSE TITLE</th>
-                <th>CREDITS</th>
-                <th>RE-REGISTERED</th>
-            </tr>
-            <?php
-            $count = $_SESSION["count1"];
-            for ($j = 0; $j < $count; $j++) {
-                echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td><td>{$array[$j][3]}</td></tr>";
-            }
-            ?>
+        <?php
+        if ($_SESSION["count1"] == 0) {
+            echo '<span style="font-size:120%";>NO COURSE FOUND<br>';
+        } else {
+        ?>
+            <table>
+                <tr>
+                    <th>COURSE CODE</th>
+                    <th>COURSE TITLE</th>
+                    <th>CREDITS</th>
+                    <th>RE-REGISTERED</th>
+                </tr>
+                <?php
+                $count = $_SESSION["count1"];
+                for ($j = 0; $j < $count; $j++) {
+                    echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td><td>{$array[$j][3]}</td></tr>";
+                }
+                ?>
 
-        </table>
+            </table>
+        <?php } ?>
     </section>
 </body>
 

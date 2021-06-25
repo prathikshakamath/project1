@@ -207,24 +207,28 @@
 
             <h2>ELIGIBILITY TABLE</h2>
             <p>(TO CHECK IF YOU ARE ELIGIBLE FOR EXAM OR NOT)</p>
-            <table>
-                <tr>
-                    <th>COURSE CODE</th>
-                    <th>COURSE TITLE</th>
-                    <th>ATTENDANCE</th>
-                    <th>CIE MARKS</th>
-                    <th>ELIGIBILITY</th>
-                </tr>
+            <?php
+            if ($_SESSION["count1"] == 0) {
+                echo '<span style="font-size:120%";>NO COURSE FOUND<br>';
+            } else {
+            ?>
+                <table>
+                    <tr>
+                        <th>COURSE CODE</th>
+                        <th>COURSE TITLE</th>
+                        <th>ATTENDANCE</th>
+                        <th>CIE MARKS</th>
+                        <th>ELIGIBILITY</th>
+                    </tr>
 
-                <?php
-                $count = $_SESSION["count1"];
-                for ($j = 0; $j < $count; $j++) {
-                    echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td><td>{$array[$j][3]}</td><td>{$array[$j][4]}</td></tr>";
-                }
-                ?>
-
-
-            </table>
+                    <?php
+                    $count = $_SESSION["count1"];
+                    for ($j = 0; $j < $count; $j++) {
+                        echo "<tr><td>{$array[$j][0]}</td><td> {$array[$j][1]}</td><td>{$array[$j][2]}</td><td>{$array[$j][3]}</td><td>{$array[$j][4]}</td></tr>";
+                    }
+                    ?>
+                </table>
+            <?php } ?>
         </section>
 
     </body>

@@ -121,10 +121,11 @@
         }
 
         .box {
-            padding-top: 3%;
-            padding-bottom: 2%;
-            margin: 0 25% 0 25%;
+            padding-top: 2%;
+            padding-bottom: 1%;
+            margin: 0 30% 0 30%;
             border: 2px solid black;
+            background-color: white;
 
         }
 
@@ -137,6 +138,16 @@
             font-size: 130%;
             line-height: 120%;
             font-weight: 200;
+        }
+
+        .link {
+            margin-left: 40%;
+            font-size: 110%;
+            font-weight: 150;
+        }
+
+        .link a:hover {
+            color: #EE4B2B;
         }
     </style>
 
@@ -214,9 +225,9 @@
                 <span class="detail"><?php print "{$loggedin_phone}" ?></span><br />
 
             </div>
-            <div class="main-content">
-            <p class="main-content__body" data-lead-id="main-content-body"><a href="password.php" style="text-decoration:none;"> Change Password</a> </p>
-        </div>
+
+            <p class="link"><a href="password.php" style="text-decoration:none;"><i class="fas fa-key"></i> Change Password</a></p>
+
         </section>
     </section>
 

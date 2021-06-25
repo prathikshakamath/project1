@@ -177,7 +177,7 @@
         $result = mysqli_query($conn, $sql1);
         $c = mysqli_num_rows($result);
         if ($c == 0) {
-            echo ("NO TIMETABLE FOUND");
+            echo '<span style="font-size:120%";>NO TIMETABLE FOUND<br>';
         } else {
 
             $j = 0;

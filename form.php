@@ -26,9 +26,15 @@
         <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
         <title>Submit</title>
         <style>
+            table {
+                margin: auto;
+            }
+
             table,
             th,
             td {
+                text-align: center;
+                padding: 1%;
                 border-collapse: collapse;
                 border: 1px solid #000000;
                 width: 1000px;
@@ -39,29 +45,30 @@
                 height: 30px;
             }
 
+            th {
+                background-color: #000000;
+                color: aliceblue;
+                border: 1px solid aliceblue;
+            }
+
+            table {
+                border: 2px solid black;
+            }
+
             body {
                 background-color: lightblue;
             }
 
             .right {
                 float: right;
-                width: 90%;
+                width: 100%;
                 background-color: lightblue;
 
             }
 
 
 
-            .logout {
-                position: fixed;
-                background-color: lightblue;
-                color: white;
-                border-color: #ff0000;
-                border: 3px solid red;
-                top: 1%;
-                left: 93%;
-                padding: 0.5%;
-            }
+
 
             .submit {
                 color: white;
@@ -80,12 +87,14 @@
                 margin: 8px 0;
                 border: none;
                 cursor: pointer;
-                width: 73%;
+                width: 25%;
                 opacity: 0.9;
+                margin-left: 60%;
             }
 
             .registerbtn:hover {
                 opacity: 1;
+                border: 1px solid #000000;
             }
 
             label,
@@ -113,7 +122,6 @@
 </head>
 
 <body>
-    <button class="logout"><a href="student_login.php">LOGOUT</a></button>
 
     <section class="right">
         <?php
@@ -166,10 +174,10 @@
 
 
             </table>
-
-            <input type="checkbox" name="subject" id="I Agree To All The Necessary Condition" required style="margin-left:-1%;">
-            <label for="I Agree To All The Necessary Conditions" style="margin-left:-0.5%;">I have checked all the details.</label>
-            <br /><br /><br />
+            <div style="margin-left:13%;">
+                <input type="checkbox" name="subject" id="check" required>
+                <label for="I Agree To All The Necessary Conditions" style="margin-left:-0.5%; font-size:115%;">I have checked all the details.</label>
+                <br /><br /><br />
             </div>
 
             <input type="submit" class="registerbtn" value="SUBMIT">
