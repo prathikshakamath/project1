@@ -177,26 +177,28 @@
             <button class="logout"><a href="logout_admin.php">LOGOUT</a></button>
             <h2 style="font-size: 200%;" class="head">Announcements</h2>
             <ul class="list" id="list">
-                <li>SEE exams are scheduled to be held from 17/11/2020.Find the timetable <a href="timetable.html">here</a></li>
+                <?php
+                $tbl_name1 = "announcement";
+                $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
+                mysqli_select_db($conn, "$db_name") or die("cannot select DB");
 
-                <li>Important:The last date to fill exam registration form is extended till 10/11/2020.Fill the form <a href="form.html">here</a></li>
-
-                <li>Exam registration form is out.Fill the form <a href="form.html">here</a></li>
-
-            </ul>
-            <input type='text' id='idea'><br />
-            <input type="button" id="add" value="Add New">
-            <script>
-                document.getElementById("add").onclick = function() {
-
-                    var node = document.createElement("Li");
-                    var text = document.getElementById("idea").value;
-                    var textnode = document.createTextNode(text);
-                    node.appendChild(textnode);
-                    document.getElementById("list").appendChild(node);
+                $sql = "SELECT msg from $tbl_name1 as a 
+            order by a.time desc limit 5";
+                $res = mysqli_query($conn, $sql);
+                $count = mysqli_num_rows($res);
+                $i = 0;
+                while ($row = mysqli_fetch_assoc($res)) {
+                    $array[$i++] = $row['msg'];
                 }
-            </script>
-            <ul id='list'></ul>
+                for ($j = 0; $j < $count; $j++) {
+                ?>
+                    <li><?php echo "{$array[$j]}"; ?></li>
+                <?php } ?>
+            </ul>
+            <form method="POST" action="announcement.php" name="form3">
+                <input type='text' id='idea' name="msg"><br />
+                <input type="submit" value="ADD NEW" value="submit">
+            </form>
 
         </section>
     </div>

@@ -160,11 +160,23 @@
     <section class="right" id="announce">
         <h2 style="font-size: 200%;" class="head">Updates</h2>
         <ul class="list">
-            <li>SEE exams are scheduled to be held from 17/11/2020.Find the timetable <a href="timetable.php">here</a></li>
+            <?php
+            $tbl_name1 = "announcement";
+            $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
+            mysqli_select_db($conn, "$db_name") or die("cannot select DB");
 
-            <li>Important:The last date to fill exam registration form is extended till 10/11/2020.Fill the form <a href="form.php">here</a></li>
-
-            <li>Exam registration form is out.Fill the form <a href="form.php">here</a></li>
+            $sql = "SELECT msg from $tbl_name1 as a 
+            order by a.id desc limit 5";
+            $res = mysqli_query($conn, $sql);
+            $count = mysqli_num_rows($res);
+            $i = 0;
+            while ($row = mysqli_fetch_assoc($res)) {
+                $array[$i++] = $row['msg'];
+            }
+            for ($j = 0; $j < $count; $j++) {
+            ?>
+                <li><?php echo "{$array[$j]}"; ?></li>
+            <?php } ?>
 
         </ul>
 
