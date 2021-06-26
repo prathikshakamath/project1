@@ -3,7 +3,7 @@ include('session.php');
 if (isset($_POST['but_upload'])) {
 
     $name = $_FILES['file']['name'];
-    $target_dir = "images/";
+    $target_dir = "upload/";
     $target_file = $target_dir . basename($_FILES["file"]["name"]);
 
     // Select file type
@@ -18,9 +18,9 @@ if (isset($_POST['but_upload'])) {
         $conv = explode('.', $name);
         $ext = $conv['1'];
         // $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
-        if (move_uploaded_file($_FILES['file']['tmp_name'], "upload/" . $loggedin_usn . "." . $ext)) {
+        if (move_uploaded_file($_FILES['file']['tmp_name'], "upload/" . $loggedin_usn . "." . $imageFileType)) {
             // Insert record
-            $url = $loggedin_usn . "." . $ext;
+            $url = $loggedin_usn . "." . $imageFileType;
             //echo "{$url}";
             $sql = "UPDATE student SET image_url='$url' WHERE usn='$loggedin_usn'";
             if (mysqli_query($conn, $sql)) {
