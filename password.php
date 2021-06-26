@@ -1,6 +1,7 @@
 <html>
 <head>
-<?php
+    
+    <?php
     include('session.php');
     //session_start();
     ?>
