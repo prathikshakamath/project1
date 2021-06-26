@@ -5,6 +5,7 @@
     //session_start();
     ?>
 <title>Change Password</title>
+
 <link rel="stylesheet" type="text/css" href="styles.css" />
 <style>
 body {
