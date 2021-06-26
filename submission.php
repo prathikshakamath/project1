@@ -161,7 +161,7 @@
                 echo '<p class="link"><a href="admin_homepage.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to homepage</a></p>';
             } else {
                 for ($i = 0; $i < $_SESSION["count1"]; $i++) {  ?>
-                    <input type="radio" name="eid" value="<?php echo htmlspecialchars($array[$i][0]); ?>"><?php echo "<span> {$array[$i][1]} (SEM: {$array[$i][2]}) {$array[$i][3]}-{$array[$i][4]}</span> "; ?>
+                    <input type="radio" name="eid" required value="<?php echo htmlspecialchars($array[$i][0]); ?>"><?php echo "<span> {$array[$i][1]} (SEM: {$array[$i][2]}) {$array[$i][3]}-{$array[$i][4]}</span> "; ?>
                     <br>
 
                 <?php }
