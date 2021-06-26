@@ -183,7 +183,7 @@
                 mysqli_select_db($conn, "$db_name") or die("cannot select DB");
 
                 $sql = "SELECT msg from $tbl_name1 as a 
-            order by a.time desc limit 5";
+            order by a.id desc limit 5";
                 $res = mysqli_query($conn, $sql);
                 $count = mysqli_num_rows($res);
                 $i = 0;
