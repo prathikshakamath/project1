@@ -142,7 +142,7 @@
               <table class="table table-bordered">
                 <tbody>
                   <tr>
-                    <th scope="row txt-center"><img src="<?php echo $profile_url; ?>" width=" 123px" height="125px" /></th>
+                    <th scope="row txt-center"><img src="<?php echo $_SESSION['profile_url']; ?>" width=" 123px" height="125px" /></th>
                   </tr>
                 </tbody>
               </table>

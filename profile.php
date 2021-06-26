@@ -202,7 +202,7 @@
         }
     </script>
     <section class="right" id="profile">
-        <section class="box"> <img src="<?php echo $profile_url; ?>" width="150px" height="175px" style="margin-top:-1%;"><br /><br />
+        <section class="box"> <img src="<?php echo $_SESSION['profile_url']; ?>" width="150px" height="175px" style="margin-top:-1%;"><br /><br />
             <p class="link1"><a href="profile_photo.php" style="text-decoration:none;"><i class="fas fa-user"></i> Change Profile</a></p>
             <div>
 

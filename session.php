@@ -23,7 +23,7 @@ $loggedin_sem = $row['current_sem'];
 $loggedin_section = $row['section'];
 $loggedin_phone = $row['phone'];
 $profile = $row['image_url'];
-$profile_url = "upload/" . $profile;
+$_SESSION['profile_url'] = "upload/" . $profile;
 if (!isset($loggedin_email) || $loggedin_email == NULL) {
     echo "Go back";
     header("Location:student_login.php");

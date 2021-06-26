@@ -22,9 +22,12 @@ if (isset($_POST['but_upload'])) {
             // Insert record
             $url = $loggedin_usn . "." . $imageFileType;
             //echo "{$url}";
+
             $sql = "UPDATE student SET image_url='$url' WHERE usn='$loggedin_usn'";
             if (mysqli_query($conn, $sql)) {
                 echo "Profile updated successfully";
+                $_SESSION['profile_url'] = "upload/" . $url;
+                //echo $_SESSION['profile_url'];
             } else {
                 echo "Error updating Profile: " . mysqli_error($conn);
             }
