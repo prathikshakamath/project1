@@ -116,7 +116,7 @@
                 <br>
                 <?php
                 for ($i = 0; $i < $_SESSION["count1"]; $i++) {  ?>
-                    <input type="radio" name="eid" value="<?php echo htmlspecialchars($array[$i][0]); ?>"><?php echo "<span> SEM:{$array[$i][2]} {$array[$i][1]} {$array[$i][3]}-{$array[$i][4]}</span> "; ?>
+                    <input type="radio" name="eid" required value="<?php echo htmlspecialchars($array[$i][0]); ?>"><?php echo "<span> SEM:{$array[$i][2]} {$array[$i][1]} {$array[$i][3]}-{$array[$i][4]}</span> "; ?>
                     <br>
 
                 <?php } ?>
