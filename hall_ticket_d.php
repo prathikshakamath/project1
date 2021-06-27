@@ -85,13 +85,13 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <title>admit Card</title>
+  <title>Admit Card</title>
 
 
 
 </head>
 
-<body>
+<body onload="window.print()">
 
   <section>
     <div class="container">
@@ -179,7 +179,7 @@
                 }
                 ?>
                 <h2>TIME TABLE</h2>
-                <table style="width:1000px;">
+                <table style="width:99%;">
                   <tr>
                     <th>COURSE CODE</th>
                     <th>COURSE TITLE</th>
