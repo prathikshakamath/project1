@@ -147,7 +147,7 @@
             mysqli_select_db($conn, "$db_name") or die("cannot select DB");
 
             $sql = "SELECT c.course_id AS cid,c.name as cname,d.name as dname FROM $tbl_name2 d,$tbl_name1 c
-                    WHERE c.sem='$esem' and c.dept_id = d.dept_id order by d.dept_id";
+                    WHERE c.sem='$esem' and c.dept_id = d.dept_id and c.credits>0 order by d.dept_id";
             $res = mysqli_query($conn, $sql);
             $_SESSION["count1"] = mysqli_num_rows($res);
             $j = 0;
