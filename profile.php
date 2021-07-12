@@ -146,8 +146,7 @@
             font-weight: 150;
         }
 
-        .link a:hover,
-        .link1 a:hover {
+        .link a:hover {
             color: #EE4B2B;
         }
     </style>

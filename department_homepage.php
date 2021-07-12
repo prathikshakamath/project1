@@ -182,7 +182,7 @@
 
         </section>
         <section class="column" id="main">
-            <button type="submit"><a href="add_exam.php">Add Student </a></button>
+            <button type="submit"><a href="add_student.php">Add Student </a></button>
             <button type="submit"><a href="submission.php">Delete Student</a> </button>
             <button type="submit"><a href="submission.php">Add course</a> </button>
             <button type="submit"><a href="submission.php">Delete course</a> </button>
