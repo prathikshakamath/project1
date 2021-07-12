@@ -20,8 +20,13 @@ $sql = "SELECT * FROM $tbl_name WHERE email='$un' and password='$pwd'";
 $result = mysqli_query($conn, $sql);
 $count = mysqli_num_rows($result);
 if ($count == 1) {
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    $loggedin_dept = $row['dept_id'];
     $_SESSION["email"] = $un;
-    header("location:admin_homepage.php");
+    if ($loggedin_dept == "D000")
+        header("location:admin_homepage.php");
+    else
+        header("location:department_homepage.php");
 } else {
     $_SESSION["msg"] = "Please check your email and password";
     header("location:admin_login.php");
