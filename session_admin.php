@@ -15,6 +15,7 @@ $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 $loggedin_email = $row['email'];
 $loggedin_id = $row['admin_id'];
 $loggedin_name = $row['name'];
+$loggedin_dept = $row['dept_id'];
 
 if (!isset($loggedin_email) || $loggedin_email == NULL) {
     echo "Go back";
