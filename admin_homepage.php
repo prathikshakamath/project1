@@ -53,7 +53,7 @@
         .column {
             float: left;
             height: 100;
-            padding-top: 5%;
+            /* padding-top: 5%; */
             text-align: center;
         }
 
@@ -63,6 +63,8 @@
             line-height: 170%;
             text-align: left;
             padding-left: 10%;
+            position: relative;
+            top: 20%;
         }
 
 
@@ -78,6 +80,8 @@
             display: inline;
             font-family: "Alegreya";
             padding-top: 10%;
+            position: relative;
+            top: 15%;
         }
 
         .logout {
@@ -117,6 +121,8 @@
             color: orange;
             font-size: 200%;
             text-align: center;
+            position: relative;
+            top: 13%;
         }
 
 
@@ -149,6 +155,11 @@
         #add {
             padding: 2%;
             width: 40;
+        }
+
+        #left img {
+            position: relative;
+            top: 10%;
         }
     </style>
 

@@ -1,13 +1,47 @@
+<?php
+include('session_admin.php');
+if (isset($_POST['submit'])) {
+    $host = "localhost";
+    $username = "root";
+    $password = "";
+    $db_name = "project";
+    $tbl_name = "student";
+    $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
+    mysqli_select_db($conn, "$db_name") or die("cannot select DB");
+
+    $name = $_POST["studentname"];
+    $usn = $_POST["usn"];
+    $section = $_POST["section"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $sem = $_POST["sem"];
+    $dept = $_POST["dept"];
+    // To protect MySQL injection (more detail about MySQL injection)
+    $name = stripslashes($name);
+    $usn = stripslashes($usn);
+    $section = stripslashes($section);
+    $email = stripslashes($email);
+    $phone = stripslashes($phone);
+    $sem = stripslashes($sem);
+    $dept = stripslashes($dept);
+
+    $name = mysqli_real_escape_string($conn, $name);
+    $usn = mysqli_real_escape_string($conn, $usn);
+    $section = mysqli_real_escape_string($conn, $section);
+    $email = mysqli_real_escape_string($conn, $email);
+    $phone = mysqli_real_escape_string($conn, $phone);
+    $sem = mysqli_real_escape_string($conn, $sem);
+    $dept = mysqli_real_escape_string($conn, $dept);
+
+    $sql = "INSERT INTO student(usn,dept_id,name,section,current_sem,email,phone,password,image_url)   VALUES ('$usn','$dept','$name' ,'$section','$sem' ,'$email','$phone','password','profilepic.jpg')";
+    $result = mysqli_query($conn, $sql);
+    echo "Saved Successfully....";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <?php
-    include('session_admin.php');
-    //session_start();
-    ?>
-
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
@@ -57,8 +91,8 @@
         input[type=text],
         input[type=date],
         select {
-            width: 50%;
-            padding: 15px;
+            width: 40%;
+            padding: 1%;
             margin: 5px 0 22px 0;
             display: inline-block;
             border: none;
@@ -126,9 +160,27 @@
 </head>
 
 <body>
+    <?php
+    $tbl_name3 = "department";
+    $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
+    mysqli_select_db($conn, "$db_name") or die("cannot select DB");
+
+    $sql = "SELECT d.dept_id AS did,d.name as dname FROM $tbl_name3 d
+             where dept_id <> 'D000'";
+
+    $res = mysqli_query($conn, $sql);
+    $count1 = mysqli_num_rows($res);
+    $j = 0;
+    while ($row = mysqli_fetch_assoc($res)) {
+        $i = 0;
+        $array[$j][$i++] = $row['did'];
+        $array[$j][$i++] = $row['dname'];
+        $j++;
+    }
+    ?>
 
     <section class="right">
-        <form method="POST" action="student_add.php" name="form2">
+        <form method="POST" action="?" name="form2">
 
             <center>
                 <h1> ADD STUDENT:</h1>
@@ -137,7 +189,7 @@
             <div class="container">
                 <div class="shift">
                     <label class='field'> Student Name: </label>
-                    <input type="text" name="studentname" placeholder="Student name" pattern="[A-Za-z]{1,}" style="text-transform:uppercase" required autocomplete="off">
+                    <input type="text" name="studentname" placeholder="Student name" pattern="[A-Za-z\s]{1,}" style="text-transform:uppercase" required autocomplete="off">
                 </div>
                 <div class="shift">
                     <label class="field"> USN </label>
@@ -149,42 +201,47 @@
                     <input type="text" name="section" placeholder="Section" pattern="[A-Za-z]{1,}" style="text-transform:uppercase" required autocomplete="off">
                 </div>
                 <div class="shift">
-                <label for="email"><b>Email</b></label>
+                    <label for="email"><b>Email</b></label>
                     <input type="text" placeholder="Enter Email" name="email" required pattern="[a-z0-9.]+@bmsce.ac.in$" title="Enter valid college mail id" autocomplete="off"><br />
                 </div>
                 <div class="shift">
-                <label for="pwd"><b>Password</b></label>
-                    <input type="text" placeholder="Enter password" name="pwd" required >  
-                </div>
-                <div class="shift">
-                <label class="field">
+                    <label class="field">
                         Phone :
                     </label>
                     <input type="text" name="phone" placeholder="phone no." size="10" required pattern="[0-9]{10}" title="Enter a valid phone number" autocomplete="off"><br />
                 </div>
-                <label class="field left">
-                Select department:
-            </label>
-            <br>
-            
-                    <div>
-                <label class="field left">
-                    Semester:
-                </label>
+                <div class="shift">
+                    <label class="field left">
+                        Department:
+                    </label>
+                    <select name="sem" required>
+                        <option value="1"> I </option>
+                        <option value="2"> II</option>
+                        <option value="3"> III</option>
+                        <option value="4"> IV</option>
+                        <option value="5"> V</option>
+                        <option value="6"> VI</option>
+                        <option value="7"> VII</option>
+                        <option value="8"> VIII</option>
+                    </select>
+                </div>
+                <br>
 
-                <select name="sem" required>
-                    <option value="">Semester</option>
-                    <option value="1"> I </option>
-                    <option value="2"> II</option>
-                    <option value="3"> III</option>
-                    <option value="4"> IV</option>
-                    <option value="5"> V</option>
-                    <option value="6"> VI</option>
-                    <option value="7"> VII</option>
-                    <option value="8"> VIII</option>
-                </select>
-            </div>
+                <div class="shift">
+                    <label class="field left">
+                        Semester:
+                    </label>
 
+                    <select name="dept" required>
+                        <?php
+                        for ($i = 0; $i < $count1; $i++) {  ?>
+                            <option value="<?php echo htmlspecialchars($array[$i][0]); ?>"><?php echo "<span> {$array[$i][1]}"; ?></option>
+                        <?php
+                        } ?>
+                    </select>
+                </div>
+
+                <input type="submit" class="registerbtn" value="NEXT" name="submit">
         </form>
     </section>
 </body>
