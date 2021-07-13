@@ -1,48 +1,36 @@
-
-//deleting the data from the forms
-
 <?php
-include('session_admin.php')
-$loggedin_dept = $_POST["dept_id"];
-$_SESSION["dept_id"] = $loggedin_dept;
+include('session_admin.php');
 
-// $tbl_name1 = "exam_registration";
-// $tbl_name2 = "student";
-// $tbl_name3 = "exam";
+$host = "localhost";
+$username = "root";
+$password = "";
+$db_name = "project";
+$tbl_name = "student";
 $conn = mysqli_connect("$host", "$username", "$password") or die("cannot connect");
 mysqli_select_db($conn, "$db_name") or die("cannot select DB");
 
-$sql = "select course_id,name,sem,credits from course where dept_id = $did;";
+
+if (isset($_POST['submit'])) {
+    $dep = $_POST['fname'];
+    $sql2 = "delete from course where course_id='$dep';";
+    if ($conn->query($sql2) === TRUE) {
+        echo "Record deleted successfully";
+    } else {
+        echo "Error deleting record: " . $conn->error;
+    }
+}
+$sql = "select course_id as cid,name as cname,sem as sem,credits as credits from course where dept_id = '$loggedin_dept';";
 $res = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($res);
-$course_id = $row['course_id'];
-$dname = $row['name'];
-$dsem = $row['sem'];
-$credits = $row['credits'];
-
-
-// $sql = "SELECT e.usn AS usn,s.name as name,s.current_sem as sem FROM $tbl_name1 e,$tbl_name2 s
-//             WHERE e.exam_id = '$eid' and e.usn = s.usn";
-
-// $res = mysqli_query($conn, $sql);
-// $count1 = mysqli_num_rows($res);
-// //echo "{$count1}";
-// $j = 0;
-// while ($row = mysqli_fetch_assoc($res)) {
-//     $i = 0;
-//     $array[$j][$i++] = $row['usn'];
-//     $array[$j][$i++] = $row['name'];
-//     $array[$j][$i++] = $row['sem'];
-//     $j++;
-// }
-$dep = $_POST['fname'];
-$sql2 = "delete from course where dept_id = $dep;";
-if ($conn->query($sql) === TRUE) {
-    echo "Record deleted successfully";
-  } else {
-    echo "Error deleting record: " . $conn->error;
-  }
-
+$count1 = mysqli_num_rows($res);
+$j = 0;
+while ($row = mysqli_fetch_assoc($res)) {
+    $i = 0;
+    $array[$j][$i++] = $row['cid'];
+    $array[$j][$i++] = $row['cname'];
+    $array[$j][$i++] = $row['sem'];
+    $array[$j][$i++] = $row['credits'];
+    $j++;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,13 +111,22 @@ if ($conn->query($sql) === TRUE) {
             font-size: 220%;
             color: black;
         }
+
+        a:hover {
+            color: red;
+        }
+
+        p a {
+            color: navy;
+            margin-left: 90%;
+            font-size: 100%;
+        }
     </style>
 
 </head>
 
 <body>
-    <button class="logout"><a href="admin_login.php">LOGOUT</a></button>
-
+    <p class="back"><a href="department_homepage.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to homepage</a></p>
 
 
     <section class="table">
@@ -140,7 +137,7 @@ if ($conn->query($sql) === TRUE) {
             echo '<span style="font-size:120%";>NO STUDENT FOUND';
         } else {
         ?>
-            <table id = "table">
+            <table id="table">
                 <tr>
                     <th>Course_id</th>
                     <th>Course name</th>
@@ -149,63 +146,62 @@ if ($conn->query($sql) === TRUE) {
                 </tr>
             <?php
             for ($j = 0; $j < $count1; $j++) {
-                echo "<tr><td>$course_id</td><td>$dname</td><td>$dsem</td><td>$credits</td></tr>";
+                echo "<tr><td>{$array[$j][0]}</td><td>{$array[$j][1]}</td><td>{$array[$j][2]}</td><td>{$array[$j][3]}</td></tr>";
             }
         }
             ?>
             </table>
     </section>
-    <p class="back"><a href="admin_homepage.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to homepage</a></p>
-<form id = "myform" action="delete.php" method = "post">
-<input name = 'fname'id = 'fname'>
-</form>
+
+    <form id="myform" action="?" method="post">
+        <span>Are you sure you want to delete this course?</span>
+        <input name='fname' id='fname'>
+        <input type="submit" class="registerbtn" value="DELETE" name="submit">
+    </form>
 </body>
 
 <script>
-            var table = document.getElementById("table");
-            for(var i = 0; i<table.rows.length; i++){
-                table.rows[i].onclick = function(){
-                    //rIndex = this.rowIndex;
-                    if(confirm("Are you sure you want to delete this course?")){
-                    document.getElementById("fname").value = this.cells[0].innerHTML;
+    var table = document.getElementById("table");
+    for (var i = 0; i < table.rows.length; i++) {
+        table.rows[i].onclick = function() {
+            //rIndex = this.rowIndex;
 
-                    console.log(document.getElementById("fname").value);
-                    if(document.getElementById("fname").value!=''){
-                  submitform();
-                    }
-                }
-                    
-                };
+            document.getElementById("fname").value = this.cells[0].innerHTML;
+
+            console.log(document.getElementById("fname").value);
+            if (document.getElementById("fname").value != '') {
+                submitform();
             }
 
-          
 
-            function submitform() {
-if (validate()) 
-{
-
-document.getElementById("myform").submit();
-document.getElementById("fname").value = "";
-}
-};
+        };
+    }
 
 
 
-function validate() {
+    function submitform() {
+        if (validate()) {
 
-var fname = document.getElementById("fname").value;
-
-
-if (fname != '') {
-return true;
-} else {
-alert("There is no value");
-return false;
-}
-
-}
+            document.getElementById("myform").submit();
+            document.getElementById("fname").value = "";
+        }
+    };
 
 
-        </script>
+
+    function validate() {
+
+        var fname = document.getElementById("fname").value;
+
+
+        if (fname != '') {
+            return true;
+        } else {
+            alert("There is no value");
+            return false;
+        }
+
+    }
+</script>
 
 </html>
