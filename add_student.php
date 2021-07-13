@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
     $email = $_POST["email"];
     $phone = $_POST["phone"];
     $sem = $_POST["sem"];
-    $dept = $_POST["dept"];
+    // $dept = $_POST["dept"];
     // To protect MySQL injection (more detail about MySQL injection)
     $name = stripslashes($name);
     $usn = stripslashes($usn);
@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
     $email = stripslashes($email);
     $phone = stripslashes($phone);
     $sem = stripslashes($sem);
-    $dept = stripslashes($dept);
+    //$dept = stripslashes($dept);
 
     $name = mysqli_real_escape_string($conn, $name);
     $usn = mysqli_real_escape_string($conn, $usn);
@@ -31,9 +31,9 @@ if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($conn, $email);
     $phone = mysqli_real_escape_string($conn, $phone);
     $sem = mysqli_real_escape_string($conn, $sem);
-    $dept = mysqli_real_escape_string($conn, $dept);
+    //$dept = mysqli_real_escape_string($conn, $dept);
 
-    $sql = "INSERT INTO student(usn,dept_id,name,section,current_sem,email,phone,password,image_url)   VALUES ('$usn','$dept','$name' ,'$section','$sem' ,'$email','$phone','password','profilepic.jpg')";
+    $sql = "INSERT INTO student(usn,dept_id,name,section,current_sem,email,phone,password,image_url)   VALUES ('$usn','$loggedin_dept','$name' ,'$section','$sem' ,'$email','$phone','password','profilepic.jpg')";
     $result = mysqli_query($conn, $sql);
     echo "Saved Successfully....";
 }
@@ -155,6 +155,16 @@ if (isset($_POST['submit'])) {
         div .name>input {
             width: 80%;
         }
+
+        a:hover {
+            color: red;
+        }
+
+        p a {
+            color: navy;
+            margin-left: 80%;
+            font-size: 110%;
+        }
     </style>
 
 </head>
@@ -180,6 +190,7 @@ if (isset($_POST['submit'])) {
     ?>
 
     <section class="right">
+        <p class="back"><a href="department_homepage.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to homepage</a></p>
         <form method="POST" action="?" name="form2">
 
             <center>
@@ -212,7 +223,7 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="shift">
                     <label class="field left">
-                        Department:
+                        Semester:
                     </label>
                     <select name="sem" required>
                         <option value="1"> I </option>
@@ -225,21 +236,7 @@ if (isset($_POST['submit'])) {
                         <option value="8"> VIII</option>
                     </select>
                 </div>
-                <br>
 
-                <div class="shift">
-                    <label class="field left">
-                        Semester:
-                    </label>
-
-                    <select name="dept" required>
-                        <?php
-                        for ($i = 0; $i < $count1; $i++) {  ?>
-                            <option value="<?php echo htmlspecialchars($array[$i][0]); ?>"><?php echo "<span> {$array[$i][1]}"; ?></option>
-                        <?php
-                        } ?>
-                    </select>
-                </div>
 
                 <input type="submit" class="registerbtn" value="NEXT" name="submit">
         </form>
