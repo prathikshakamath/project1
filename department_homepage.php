@@ -186,6 +186,8 @@
             <button type="submit"><a href="delete_student.php">Delete Student</a> </button>
             <button type="submit"><a href="add_course.php">Add course</a> </button>
             <button type="submit"><a href="delete_course.php">Delete course</a> </button>
+            <button type="submit"><a href="add_eligibility.php">Add Eligibility</a> </button>
+
         </section>
 
 

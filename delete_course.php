@@ -119,7 +119,7 @@ while ($row = mysqli_fetch_assoc($res)) {
         p a {
             color: navy;
             margin-left: 90%;
-            font-size: 100%;
+            font-size: 80%;
         }
     </style>
 
