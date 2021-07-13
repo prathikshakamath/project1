@@ -35,6 +35,22 @@ if (isset($_POST['submit'])) {
 
     $sql = "INSERT INTO student(usn,dept_id,name,section,current_sem,email,phone,password,image_url)   VALUES ('$usn','$loggedin_dept','$name' ,'$section','$sem' ,'$email','$phone','password','profilepic.jpg')";
     $result = mysqli_query($conn, $sql);
+
+    $tbl_name1 = "course";
+
+    $sql = "SELECT c.course_id AS cid FROM $tbl_name1 c
+                    WHERE c.sem='$sem' and c.dept_id = '$loggedin_dept'";
+    $res = mysqli_query($conn, $sql);
+    $count = mysqli_num_rows($res);
+    $i = 0;
+    while ($row = mysqli_fetch_assoc($res)) {
+        $array1[$i++] = $row['cid'];
+    }
+
+    for ($i = 0; $i < $count; $i++) {
+        $sql = "INSERT INTO course_enrolled(usn,course_id,sem,reregistered)   VALUES ('$usn','$array1[$i]','$sem' ,'NO')";
+        $result = mysqli_query($conn, $sql);
+    }
     echo "Saved Successfully....";
 }
 ?>
