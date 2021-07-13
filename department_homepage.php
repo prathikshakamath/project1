@@ -13,6 +13,11 @@
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
     <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
         body,
         html {
             width: 100%;
@@ -25,6 +30,7 @@
         }
 
         #left {
+            padding: 0px;
             width: 30%;
             height: 100%;
             background-color: #cae9f5;
@@ -39,6 +45,7 @@
             border-collapse: collapse;
             margin: auto;
             font-size: 100%;
+
         }
 
         #right {
@@ -52,12 +59,20 @@
 
         .column {
             float: left;
-            height: 100%;
-            padding-top: 5%;
             text-align: center;
+
         }
 
+        .column h2 {
+            position: relative;
+            top: 20%;
+        }
+
+
+
         .list {
+            position: relative;
+            top: 25%;
             list-style-type: none;
             padding: 2%;
             line-height: 170%;
@@ -107,6 +122,7 @@
             border: none;
             cursor: pointer;
             position: relative;
+            top: 10%;
         }
 
         #main a:hover {
