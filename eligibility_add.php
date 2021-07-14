@@ -4,7 +4,8 @@
 <head>
     <?php
     include('session_admin.php');
-    $cid = $_POST["cid"];
+    $_SESSION['cid'] = $_POST["cid"];
+    $cid = $_SESSION['cid'];
 
     ?>
 
@@ -134,7 +135,7 @@
             mysqli_select_db($conn, "$db_name") or die("cannot select DB");
 
             $sql = "SELECT s.usn AS usn,s.name as sname FROM $tbl_name2 s,$tbl_name1 ce
-                    WHERE ce.course_id='$cid' and s.usn=ce.usn";
+                    WHERE ce.course_id='$cid' and s.usn=ce.usn and ce.sem=s.current_sem";
             $res = mysqli_query($conn, $sql);
             $_SESSION["count1"] = mysqli_num_rows($res);
             $j = 0;
