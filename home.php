@@ -298,7 +298,7 @@
         </div>
     </div>
 
-    <footer>
+    <footer id="contact">
         <div class="div">
             <img class="img" src="images/bmsce_logo.png">
         </div>

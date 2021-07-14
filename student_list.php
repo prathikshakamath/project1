@@ -44,7 +44,7 @@ while ($row = mysqli_fetch_assoc($res)) {
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
     <link rel="stylesheet" href="table.css">
-    <title>Student Homepage</title>
+    <title>Student List</title>
     <style>
         .table {
             margin: 5% auto;

@@ -13,7 +13,7 @@
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
     <link rel="stylesheet" href="style1.css">
-    <title>Student Homepage</title>
+    <title>Profile</title>
     <style>
         .logout {
             position: fixed;

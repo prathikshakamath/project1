@@ -41,7 +41,7 @@ while ($row = mysqli_fetch_assoc($res)) {
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
     <link rel="stylesheet" href="table.css">
-    <title>Student Homepage</title>
+    <title>Delete Course</title>
     <style>
         .table {
             margin: 5% auto;
@@ -95,7 +95,7 @@ while ($row = mysqli_fetch_assoc($res)) {
             margin-left: 80%;
             font-size: 1.5rem;
             line-height: 1.4;
-            margin-top: -3.5%;
+            
         }
 
         a:hover {
@@ -118,8 +118,8 @@ while ($row = mysqli_fetch_assoc($res)) {
 
         p a {
             color: navy;
-            margin-left: 90%;
-            font-size: 80%;
+           
+            font-size: 90%;
         }
     </style>
 
@@ -128,10 +128,16 @@ while ($row = mysqli_fetch_assoc($res)) {
 <body>
     <p class="back"><a href="department_homepage.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to homepage</a></p>
 
-
+    <h2>Courses</h2>
+    <p>Select the course you want to delete</p>
+        <form id="myform" action="?" method="post">
+        <span>Are you sure you want to delete this course?</span>
+        <input name='fname' id='fname'>
+        <input type="submit" class="registerbtn" value="DELETE" name="submit">
+    </form>
     <section class="table">
-        <h2>Courses</h2>
-        <p>Select the course you want to delete</p>
+      
+    
         <?php
         if ($count1 == 0) {
             echo '<span style="font-size:120%";>NO STUDENT FOUND';
@@ -153,11 +159,7 @@ while ($row = mysqli_fetch_assoc($res)) {
             </table>
     </section>
 
-    <form id="myform" action="?" method="post">
-        <span>Are you sure you want to delete this course?</span>
-        <input name='fname' id='fname'>
-        <input type="submit" class="registerbtn" value="DELETE" name="submit">
-    </form>
+    
 </body>
 
 <script>

@@ -171,7 +171,7 @@
             </div>
         </form>
 
-        <a class="link" href="student_homepage.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to Homepage</a>
+        <a class="link" href="profile.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to Profile</a>
     </div>
 
 </body>

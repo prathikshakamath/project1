@@ -18,7 +18,7 @@ $result = mysqli_query($conn, $sql);
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
     <meta charset="utf-8" />
 
-    <title></title>
+    <title>success</title>
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400|Montserrat:700' rel='stylesheet' type='text/css'>
     <style>
         html {

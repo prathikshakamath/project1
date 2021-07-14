@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
-    <title>Student Homepage</title>
+    <title>Add Eligibility</title>
     <style>
         body {
             background-color: lightblue;
@@ -62,6 +62,11 @@
             background: #f1f1f1;
         }
 
+        .heading{
+            display: inline-block;
+            width:20%;
+            margin-left: 3%;
+        }
         span {
             display: inline-block;
             width: 80%;
@@ -96,7 +101,7 @@
             background-color: #4CAF50;
             color: white;
             padding: 16px 20px;
-            margin-left: 45%;
+            margin-left: 80%;
             border: none;
             cursor: pointer;
             width: 15%;
@@ -148,20 +153,22 @@
             ?>
 
             <div class="left">
+                <P class="heading">USN </p>
+                <p class="heading">NAME </p>
+                <p class="heading">MARKS </p>
+                <p class="heading">ATTENDANCE </p>
                 <?php
                 for ($i = 0; $i < $_SESSION["count1"]; $i++) {  ?>
                     <div class="div">
-
-
+                    
                         <?php echo "<span>{$array[$i][0]}</span>"; ?>
                     </div>
                     <div class="div">
-
+              
                         <?php echo "<span>{$array[$i][1]}</span>"; ?>
                     </div>
 
                     <div class="div">
-
                         <input type="text" id="marks" name="marks[]">
                     </div>
                     <div class="div">

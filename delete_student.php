@@ -41,7 +41,7 @@ while ($row = mysqli_fetch_assoc($res)) {
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
     <link rel="stylesheet" href="table.css">
-    <title>Student Homepage</title>
+    <title>Delete Student</title>
     <style>
         .table {
             margin: 5% auto;
@@ -95,7 +95,6 @@ while ($row = mysqli_fetch_assoc($res)) {
             margin-left: 80%;
             font-size: 1.5rem;
             line-height: 1.4;
-            margin-top: -3.5%;
         }
 
         a:hover {
@@ -118,7 +117,6 @@ while ($row = mysqli_fetch_assoc($res)) {
 
         p a {
             color: navy;
-            margin-left: 90%;
             font-size: 100%;
         }
     </style>

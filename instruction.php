@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style1.css">
-    <title>Student Homepage</title>
+    <title>Instruction</title>
     <style>
         .sidenav {
             height: 100%;

@@ -11,7 +11,7 @@
     <script src="https://kit.fontawesome.com/f293a21338.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
     <link rel="stylesheet" href="table.css">
-    <title>Student Homepage</title>
+    <title>Timetable</title>
     <style>
         .sidenav {
             height: 100%;

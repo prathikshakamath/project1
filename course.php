@@ -11,7 +11,7 @@
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="table.css">
-    <title>Student Homepage</title>
+    <title>Courses</title>
     <style>
         .sidenav {
             height: 100%;

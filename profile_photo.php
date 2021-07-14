@@ -102,7 +102,7 @@ if (isset($_POST['but_upload'])) {
         }
     }
     ?>
-    <p class="link"><a href="student_homepage.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to homepage</a></p>
+    <p class="link"><a href="profile.php" style="text-decoration:none;"><i class="fas fa-undo-alt"></i> Back to profile</a></p>
 </body>
 
 </html>
